@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Calligraphy</title>
+    <link>https://hugo-calligraphy.netlify.app/categories/</link>
+    <description>Recent content in Categories on Calligraphy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Copyright © 2021</copyright>
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo-calligraphy.netlify.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>syntax</title>
+      <link>https://hugo-calligraphy.netlify.app/categories/syntax/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-calligraphy.netlify.app/categories/syntax/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>theme</title>
+      <link>https://hugo-calligraphy.netlify.app/categories/theme/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-calligraphy.netlify.app/categories/theme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://hugo-calligraphy.netlify.app/categories/hugo/</link>
+      <pubDate>Sun, 02 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-calligraphy.netlify.app/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>themes</title>
+      <link>https://hugo-calligraphy.netlify.app/categories/themes/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-calligraphy.netlify.app/categories/themes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>fluff</title>
+      <link>https://hugo-calligraphy.netlify.app/categories/fluff/</link>
+      <pubDate>Fri, 31 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo-calligraphy.netlify.app/categories/fluff/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
