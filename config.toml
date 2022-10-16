@@ -8,7 +8,8 @@ hasCJKLanguage = true
 
 # Change the default theme to be use when building the site with Hugo
 theme = "DoIt"
-
+[toc]
+  enable = true
 [params]
   #  DoIt theme version
   version = "0.2.X"
@@ -296,7 +297,7 @@ theme = "DoIt"
       # whether to enable the table of the contents
       enable = true
       #  whether to keep the static table of the contents in front of the post
-      keepStatic = true
+      keepStatic = false
       # whether to make the table of the contents in the sidebar automatically collapsed
       auto = true
     #  KaTeX mathematical formulas
@@ -391,7 +392,7 @@ theme = "DoIt"
       # Gitalk comment config
       [params.page.comment.gitalk]
         # 
-        enable = true
+        enable = false
         owner = ""
         repo = ""
         clientId = ""
@@ -435,7 +436,7 @@ theme = "DoIt"
         # texRenderer = false
       # Facebook comment config
       [params.page.comment.facebook]
-        enable = true
+        enable = false
         width = "100%"
         numPosts = 10
         appId = ""
@@ -465,8 +466,8 @@ theme = "DoIt"
         darkTheme = "github-dark"
       #  Twikoo comment config
       [params.page.comment.twikoo]
-        enable = false
-        envId = ""
+        enable = true
+        envId = "https://twikoo-api-fawn.vercel.app/"
         region = ""
         path = ""
         visitor = true
