@@ -326,8 +326,9 @@ theme = "DoIt"
     [params.page.header]
       # whether to enable auto header numbering
       # 是否开启标题自动编号
+
       [params.page.header.number]
-        enable = true
+        enable = false
         [params.page.header.number.format]
           h2 = "{h2} {title}"
           h3 = "{h2}.{h3} {title}"
@@ -719,6 +720,14 @@ series = "series"
 
 [menu]
   [[menu.main]]
+    identifier = "about"
+    pre = ""
+    post = ""
+    name = "About Me"
+    url = "/about/"
+    title = ""
+    weight = 1
+  [[menu.main]]
     identifier = "posts"
     # you can add extra information before the name (HTML format is supported), such as icons
     pre = ""
@@ -727,14 +736,6 @@ series = "series"
     name = "Posts"
     url = "/posts/"
     # title will be shown when you hover on this menu link
-    title = ""
-    weight = 1
-  [[menu.main]]
-    identifier = "tags"
-    pre = ""
-    post = ""
-    name = "Tags"
-    url = "/tags/"
     title = ""
     weight = 2
   [[menu.main]]
@@ -754,19 +755,12 @@ series = "series"
     title = ""
     weight = 4
   [[menu.main]]
-    identifier = "documentation"
+    identifier = "tags"
     pre = ""
     post = ""
-    name = "Docs"
-    url = "/categories/documentation/"
+    name = "Tags"
+    url = "/tags/"
     title = ""
     weight = 5
-   [[menu.main]]
-    identifier = "about"
-    pre = ""
-    post = ""
-    name = "About"
-    url = "/about/"
-    title = ""
-    weight = 6
+
 
