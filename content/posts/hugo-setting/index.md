@@ -35,8 +35,9 @@ Hugo 踩坑紀錄
 1. vscode 上方工具列 View => Command Platte
 2. 搜尋 **Dev Containers: Clone Repository in Container Volume…**
 3. 貼上在 github 取得的 HTTPS 連結
-4. vscode 上方工具列 Terminal => New Termianl
-5. 開始用 terminal 建置 hugo 環境
+4. 環境選擇： 手動輸入 Hugo (Community)
+5. vscode 上方工具列 Terminal => New Termianl
+6. 開始用 terminal 建置 hugo 環境
 
 ```bash
 # 查看 hugo 使否已建置好
@@ -61,9 +62,9 @@ hugo server -D
 hugo -D
 ```
 
-6. 在 config.toml 的 baseURL 設置為之後 github.io 網址 eg: **baseURL = "https://nofear195.github.io/my-hugo-blog/"**
-7. 新增 .github/workflows/gh-pages.yml 檔案(需要先手動新增 .github , workflows 資料夾)
-8. 在 gh-pages.ymal 內新增以下內容
+7. 在 config.toml 的 baseURL 設置為之後 github.io 網址 eg: **baseURL = "https://nofear195.github.io/my-hugo-blog/"**
+8. 新增 .github/workflows/gh-pages.yml 檔案(需要先手動新增 .github , workflows 資料夾)
+9. 在 gh-pages.ymal 內新增以下內容
 
 ``` inside file
 name: github pages
@@ -100,7 +101,7 @@ jobs:
           publish_dir: ./public
 ```
 
-9. 將以上完成的內容 push 至 github 上
+10. 將以上完成的內容 push 至 github 上
 
 ### github side 2
 
@@ -110,3 +111,6 @@ jobs:
 
 
 ## Setup (for DoIt theme)
+[DoIt basic setting](https://hugodoit.pages.dev/theme-documentation-basics/)
+
+## Tips
