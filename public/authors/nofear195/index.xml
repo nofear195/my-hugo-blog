@@ -1,11 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>nofear195&#39;s blog</title>
-        <link>https://nofear195.github.io/my-hugo-blog/</link>
-        <description>This is Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 30 Nov 2022 00:00:00 &#43;0000</lastBuildDate>
-            <atom:link href="https://nofear195.github.io/my-hugo-blog/index.xml" rel="self" type="application/rss+xml" />
-        <item>
+        <title>nofear195 - Author - nofear195&#39;s blog</title>
+        <link>https://nofear195.github.io/my-hugo-blog/authors/nofear195/</link>
+        <description>nofear195 - Author - nofear195&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 30 Nov 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nofear195.github.io/my-hugo-blog/authors/nofear195/" rel="self" type="application/rss+xml" /><item>
     <title>[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求</title>
     <link>https://nofear195.github.io/my-hugo-blog/isbn-978-986-434-784-1/</link>
     <pubDate>Wed, 30 Nov 2022 00:00:00 &#43;0000</pubDate><author>
@@ -23,6 +21,12 @@
     <pubDate>Mon, 21 Nov 2022 00:00:00 &#43;0000</pubDate><author>
                         <name>nofear195</name><uri>https://github.com/nofear195</uri><email>aaasss777as@gmail.com</email></author><guid>https://nofear195.github.io/my-hugo-blog/isbn-978-957-32-9553-2/</guid>
     <description><![CDATA[<p>ISBN 978-957-32-9552-2 (1.溝通技巧 2.說話藝術)</p>]]></description>
+</item><item>
+    <title>About Me</title>
+    <link>https://nofear195.github.io/my-hugo-blog/about/</link>
+    <pubDate>Sun, 16 Oct 2022 00:00:00 &#43;0000</pubDate><author>
+                        <name>nofear195</name><uri>https://github.com/nofear195</uri><email>aaasss777as@gmail.com</email></author><guid>https://nofear195.github.io/my-hugo-blog/about/</guid>
+    <description><![CDATA[About MeHi~ 我是 nofear195，目前是個前端工程師。 建立這個 Blog 的目的主要是在紀錄我有意識的成長歷程 不過還是怕健忘的我，可以快速複習我之前學啥ＱＡ]]></description>
 </item><item>
     <title>Hugo setting</title>
     <link>https://nofear195.github.io/my-hugo-blog/hugo-setting/</link>

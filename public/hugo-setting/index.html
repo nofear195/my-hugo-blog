@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title class="pjax-title">Hugo setting - nofear195&#39;s blog</title><meta name="Description" content="This is Hugo Site"><meta property="og:title" content="Hugo setting" />
+<meta property="og:description" content="Hugo 踩坑紀錄" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nofear195.github.io/my-hugo-blog/hugo-setting/" /><meta property="og:image" content="https://nofear195.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-16T00:00:00+00:00" /><meta property="og:site_name" content="nofear195&#39;s blog" />
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nofear195.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Hugo setting"/>
+<meta name="twitter:description" content="Hugo 踩坑紀錄"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://nofear195.github.io/my-hugo-blog/hugo-setting/" /><link rel="next" href="https://nofear195.github.io/my-hugo-blog/isbn-978-957-32-9553-2/" /><link rel="stylesheet" href="/my-hugo-blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/my-hugo-blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Hugo setting",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nofear195.github.io\/my-hugo-blog\/hugo-setting\/"
+        },"genre": "posts","keywords": "hugo","wordcount":  1090 ,
+        "url": "https:\/\/nofear195.github.io\/my-hugo-blog\/hugo-setting\/","datePublished": "2022-10-16T00:00:00+00:00","dateModified": "2022-10-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "nofear195"},"authors": [{
+                        "@type": "Person",
+                        "name": "nofear195"                    
+                    }],"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/my-hugo-blog/" title="nofear195&#39;s blog">nofear195&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/my-hugo-blog/about/"> About Me </a><a class="menu-item" href="/my-hugo-blog/posts/"> Posts </a><a class="menu-item" href="/my-hugo-blog/categories/"> Categories </a><a class="menu-item" href="/my-hugo-blog/series/"> Series </a><a class="menu-item" href="/my-hugo-blog/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="black">Black</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/my-hugo-blog/" title="nofear195&#39;s blog">nofear195&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/my-hugo-blog/about/" title="">About Me</a><a class="menu-item" href="/my-hugo-blog/posts/" title="">Posts</a><a class="menu-item" href="/my-hugo-blog/categories/" title="">Categories</a><a class="menu-item" href="/my-hugo-blog/series/" title="">Series</a><a class="menu-item" href="/my-hugo-blog/tags/" title="">Tags</a><a href="#" onclick="return false;" class="menu-item theme-select" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="black">Black</option>
+                    <option value="auto">Auto</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setup-normal">Setup (normal)</a>
+      <ul>
+        <li><a href="#github-side-1">github side 1</a></li>
+        <li><a href="#vscode-side">vscode side</a></li>
+        <li><a href="#github-side-2">github side 2</a></li>
+      </ul>
+    </li>
+    <li><a href="#setup-for-doit-theme">Setup (for DoIt theme)</a>
+      <ul>
+        <li><a href="#前置環境配置">前置環境配置</a></li>
+        <li><a href="#方法一">方法一</a></li>
+        <li><a href="#方法二">方法二</a></li>
+        <li><a href="#細節紀錄">細節紀錄</a></li>
+      </ul>
+    </li>
+    <li><a href="#others">Others</a>
+      <ul>
+        <li><a href="#刪除-git-config-內記錄有關-summodule-的資訊">刪除 .git config 內記錄有關 summodule 的資訊</a></li>
+        <li><a href="#後記">後記</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Hugo setting</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='https://nofear195.github.io/authors/nofear195'>nofear195</a></span>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/my-hugo-blog/categories/environment-build/"><i class="far fa-folder fa-fw"></i>environment-build</a></span>&nbsp;<span class="post-category">and</span>&nbsp;<span class="post-series">series <a href="/my-hugo-blog/series/blog-setting/"><i class="far fa-list-alt fa-fw"></i>blog-setting</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-10-16">2022-10-16</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-10-16">2022-10-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1090 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/my-hugo-blog/hugo-setting/" class="leancloud_visitors" data-flag-title="Hugo setting">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count" id=twikoo_visitors></span>&nbsp;views
+                    </span>&nbsp;<span id="/my-hugo-blog/hugo-setting/" class="comment_count" data-flag-title="Hugo setting">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;comments
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        data-src="/my-hugo-blog/hugo-setting/hugo_logo.webp"
+        data-srcset="/my-hugo-blog/hugo-setting/hugo_logo.webp, /my-hugo-blog/hugo-setting/hugo_logo.webp 1.5x, /my-hugo-blog/hugo-setting/hugo_logo.webp 2x"
+        data-sizes="auto"
+        alt="/my-hugo-blog/hugo-setting/hugo_logo.webp"
+        title="/my-hugo-blog/hugo-setting/hugo_logo.webp" height="500" width="1000"></div><div class="details series-nav open">
+                                <div class="details-summary series-title">
+                                    <span>Series - blog-setting</span>
+                                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                                </div>
+                                <div class="details-content series-content">
+                                    <nav>
+                                        <ul><li><span class="active">Hugo setting</span></li></ul>
+                                    </nav>
+                                </div>
+                            </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#setup-normal">Setup (normal)</a>
+      <ul>
+        <li><a href="#github-side-1">github side 1</a></li>
+        <li><a href="#vscode-side">vscode side</a></li>
+        <li><a href="#github-side-2">github side 2</a></li>
+      </ul>
+    </li>
+    <li><a href="#setup-for-doit-theme">Setup (for DoIt theme)</a>
+      <ul>
+        <li><a href="#前置環境配置">前置環境配置</a></li>
+        <li><a href="#方法一">方法一</a></li>
+        <li><a href="#方法二">方法二</a></li>
+        <li><a href="#細節紀錄">細節紀錄</a></li>
+      </ul>
+    </li>
+    <li><a href="#others">Others</a>
+      <ul>
+        <li><a href="#刪除-git-config-內記錄有關-summodule-的資訊">刪除 .git config 內記錄有關 summodule 的資訊</a></li>
+        <li><a href="#後記">後記</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Hugo 踩坑紀錄</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">以下建立方式皆以 <a href="https://code.visualstudio.com/docs/remote/containers#_quick-start-open-a-git-repository-or-github-pr-in-an-isolated-container-volume" target="_blank" rel="noopener noreferrer">Visual Studio Code Dev Containers</a> extensioin
+在獨立的 docker container 環境下建置完成</div>
+        </div>
+    </div>
+<h2 id="setup-normal" class="headerLink">
+    <a href="#setup-normal" class="header-mark"></a>Setup (normal)</h2><h3 id="github-side-1" class="headerLink">
+    <a href="#github-side-1" class="header-mark"></a>github side 1</h3><ol>
+<li>從 github 新增 repository</li>
+<li>複製 repository HTTPS 連結</li>
+</ol>
+<h3 id="vscode-side" class="headerLink">
+    <a href="#vscode-side" class="header-mark"></a>vscode side</h3><ol>
+<li>vscode 上方工具列 View =&gt; Command Platte</li>
+<li>搜尋 <strong>Dev Containers: Clone Repository in Container Volume…</strong></li>
+<li>貼上在 github 取得的 HTTPS 連結</li>
+<li>環境選擇： 手動輸入 Hugo (Community)</li>
+<li>vscode 上方工具列 Terminal =&gt; New Termianl</li>
+<li>開始用 terminal 建置 hugo 環境</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 查看 hugo 使否已建置好</span>
+</span></span><span class="line"><span class="cl">hugo version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 新增 hugo site 於根目錄 .</span>
+</span></span><span class="line"><span class="cl">hugo new site . --force
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 新增主題</span>
+</span></span><span class="line"><span class="cl">git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 設置 site 主題參數至 config.toml 檔案</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">theme</span> <span class="o">=</span> <span class="se">\&#34;</span>ananke<span class="se">\&#34;</span> &gt;&gt; config.toml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 新增文章 (draft:false)</span>
+</span></span><span class="line"><span class="cl">hugo new posts/my-first-post.md
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 啟動本地端 server</span>
+</span></span><span class="line"><span class="cl">hugo server -D
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 建置 public 靜態網頁</span>
+</span></span><span class="line"><span class="cl">hugo -D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>在 config.toml 的 baseURL 設置為之後 github.io 網址 eg: <strong>baseURL = &ldquo;<a href="https://nofear195.github.io/my-hugo-blog/%22" target="_blank" rel="noopener noreferrer">https://nofear195.github.io/my-hugo-blog/"</a></strong></li>
+<li>新增 .github/workflows/gh-pages.yml 檔案(需要先手動新增 .github , workflows 資料夾)</li>
+<li>在 gh-pages.ymal 內新增以下內容</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">name: github pages
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">on:
+</span></span><span class="line"><span class="cl">  push:
+</span></span><span class="line"><span class="cl">    branches:
+</span></span><span class="line"><span class="cl">      - main  # Set a branch to deploy
+</span></span><span class="line"><span class="cl">  pull_request:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">jobs:
+</span></span><span class="line"><span class="cl">  deploy:
+</span></span><span class="line"><span class="cl">    runs-on: ubuntu-22.04
+</span></span><span class="line"><span class="cl">    steps:
+</span></span><span class="line"><span class="cl">      - uses: actions/checkout@v3
+</span></span><span class="line"><span class="cl">        with:
+</span></span><span class="line"><span class="cl">          submodules: true  # Fetch Hugo themes (true OR recursive)
+</span></span><span class="line"><span class="cl">          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      - name: Setup Hugo
+</span></span><span class="line"><span class="cl">        uses: peaceiris/actions-hugo@v2
+</span></span><span class="line"><span class="cl">        with:
+</span></span><span class="line"><span class="cl">          hugo-version: &#39;latest&#39;
+</span></span><span class="line"><span class="cl">          extended: true
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      - name: Build
+</span></span><span class="line"><span class="cl">        run: hugo --minify
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      - name: Deploy
+</span></span><span class="line"><span class="cl">        uses: peaceiris/actions-gh-pages@v3
+</span></span><span class="line"><span class="cl">        if: github.ref == &#39;refs/heads/main&#39;
+</span></span><span class="line"><span class="cl">        with:
+</span></span><span class="line"><span class="cl">          github_token: ${{ secrets.GITHUB_TOKEN }}
+</span></span><span class="line"><span class="cl">          publish_dir: ./public
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="10">
+<li>將以上完成的內容 push 至 github 上</li>
+</ol>
+<h3 id="github-side-2" class="headerLink">
+    <a href="#github-side-2" class="header-mark"></a>github side 2</h3><ol>
+<li>在該 repositoy 頁面的工具欄點選 settings =&gt; pages</li>
+<li>Source =&gt; Deploy form a branch</li>
+<li>Branch =&gt; gh-pages =&gt; /root</li>
+</ol>
+<h2 id="setup-for-doit-theme" class="headerLink">
+    <a href="#setup-for-doit-theme" class="header-mark"></a>Setup (for DoIt theme)</h2><h3 id="前置環境配置" class="headerLink">
+    <a href="#%e5%89%8d%e7%bd%ae%e7%92%b0%e5%a2%83%e9%85%8d%e7%bd%ae" class="header-mark"></a>前置環境配置</h3><ul>
+<li>
+<p>需更改 container 環境的 Hugo 版本 ： hugo -&gt; hugo_extend (主要是能支援將 .scss 轉換成 .css)</p>
+<ul>
+<li>
+<p>需更改的文件有</p>
+<ol>
+<li>devcontainer.json</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="s2">&#34;name&#34;</span><span class="err">:</span> <span class="s2">&#34;Hugo (Community)&#34;</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;build&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;dockerfile&#34;</span><span class="p">:</span> <span class="s2">&#34;Dockerfile&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;args&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Update VARIANT to pick hugo variant.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Example variants: hugo, hugo_extended
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Rebuild the container if it already exists to update.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;VARIANT&#34;</span><span class="p">:</span> <span class="s2">&#34;hugo_extended&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Update VERSION to pick a specific hugo version.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Example versions: latest, 0.73.0, 0,71.1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// Rebuild the container if it already exists to update.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;VERSION&#34;</span><span class="p">:</span> <span class="s2">&#34;latest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Update NODE_VERSION to pick the Node.js version: 12, 14
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nt">&#34;NODE_VERSION&#34;</span><span class="p">:</span> <span class="s2">&#34;14&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="err">,</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Dockerfile</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Update the NODE_VERSION arg in docker-compose.yml to pick a Node version: 18, 16, 14</span>
+</span></span><span class="line"><span class="cl">ARG <span class="nv">NODE_VERSION</span><span class="o">=</span><span class="m">16</span>
+</span></span><span class="line"><span class="cl">FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-<span class="si">${</span><span class="nv">NODE_VERSION</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># VARIANT can be either &#39;hugo&#39; for the standard version or &#39;hugo_extended&#39; for the extended version.</span>
+</span></span><span class="line"><span class="cl">ARG <span class="nv">VARIANT</span><span class="o">=</span>hugo_extended
+</span></span><span class="line"><span class="cl"><span class="c1"># VERSION can be either &#39;latest&#39; or a specific version number</span>
+</span></span><span class="line"><span class="cl">ARG <span class="nv">VERSION</span><span class="o">=</span>latest
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>
+<p>更改文件配置後重新 build container 即可套用 hugo_extend 環境</p>
+</li>
+<li>
+<p>需依照 DoIt Theme 文件教學去設置 config.toml 檔案才能正常運行</p>
+</li>
+<li>
+<p>運行指令 <code>hugo serve --disableFastRender</code> 啟動本地端 hugo server 並支援 <strong>hotreload</strong> 功能</p>
+</li>
+</ul>
+<h3 id="方法一" class="headerLink">
+    <a href="#%e6%96%b9%e6%b3%95%e4%b8%80" class="header-mark"></a>方法一</h3><ul>
+<li>從 DoIt Theme 文件教學做設置 ＝&gt; <a href="https://hugodoit.pages.dev/theme-documentation-basics/" target="_blank" rel="noopener noreferrer">DoIt basic setting</a></li>
+</ul>
+<h3 id="方法二" class="headerLink">
+    <a href="#%e6%96%b9%e6%b3%95%e4%ba%8c" class="header-mark"></a>方法二</h3><ol>
+<li>跳過正常建置程序 <code>hugo new site . --force</code></li>
+<li>直接建立 themes 資料夾</li>
+<li>新增 submodule <code>git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt</code></li>
+<li>複製 themes/DoIt 裡面的 exampleSite 至 根目錄 .</li>
+<li>運行指令 <code>hugo serve --disableFastRender</code> 啟動本地端 hugo server</li>
+</ol>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>提示<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">方法二的步驟不限於 DoIt 主題，任何主題內含有 exampleSite 字眼的文件都可用這方法直接跑範例，  <br>
+自己再依需求從從範例修改</div>
+        </div>
+    </div>
+<h3 id="細節紀錄" class="headerLink">
+    <a href="#%e7%b4%b0%e7%af%80%e7%b4%80%e9%8c%84" class="header-mark"></a>細節紀錄</h3><ul>
+<li>文章右側的目錄列表<strong>正常顯示</strong>需要在 config.toml 內 [params.page.toc] 其中一個參數設置 <code>keepStatic = false</code></li>
+<li>Twikoo comment 留言板設置教學 : <a href="https://twikoo.js.org/quick-start.html" target="_blank" rel="noopener noreferrer">Twikoo 文档</a> 用 <strong>Vercel 部署方式</strong></li>
+</ul>
+<h2 id="others" class="headerLink">
+    <a href="#others" class="header-mark"></a>Others</h2><h3 id="刪除-git-config-內記錄有關-summodule-的資訊" class="headerLink">
+    <a href="#%e5%88%aa%e9%99%a4-git-config-%e5%85%a7%e8%a8%98%e9%8c%84%e6%9c%89%e9%97%9c-summodule-%e7%9a%84%e8%b3%87%e8%a8%8a" class="header-mark"></a>刪除 .git config 內記錄有關 summodule 的資訊</h3><ul>
+<li>可以先用 <code>cat .git/config</code> 查看 git config 資訊</li>
+<li>使用時機 手動刪除 themes 內的 submodules 後又想重新下載時，因為 git.config 紀錄，出現下載失敗資訊</li>
+<li>stack overflow 討論串連結 <a href="https://stackoverflow.com/questions/34890313/deleting-all-git-cached-submodules-from-repository" target="_blank" rel="noopener noreferrer">Deleting all Git cached submodules from repository</a></li>
+<li>下面附上最佳解答，我實測有效的 code</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># deinit all submodules from .gitmodules</span>
+</span></span><span class="line"><span class="cl">git submodule deinit .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># remove all submodules (`git rm`) from .gitmodules</span>
+</span></span><span class="line"><span class="cl">git submodule <span class="p">|</span> cut -c43- <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r line<span class="p">;</span> <span class="k">do</span> <span class="o">(</span>git rm <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># delete all submodule sections from .git/config (`git config --local --remove-section`) by fetching those from .git/config</span>
+</span></span><span class="line"><span class="cl">git config --local -l <span class="p">|</span> grep submodule <span class="p">|</span> sed -e <span class="s1">&#39;s/^\(submodule\.[^.]*\)\(.*\)/\1/g&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> -r line<span class="p">;</span> <span class="k">do</span> <span class="o">(</span>git config --local --remove-section <span class="s2">&#34;</span><span class="nv">$line</span><span class="s2">&#34;</span><span class="o">)</span><span class="p">;</span> <span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># manually remove leftovers</span>
+</span></span><span class="line"><span class="cl">rm .gitmodules
+</span></span><span class="line"><span class="cl">rm -rf .git/modules
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="後記" class="headerLink">
+    <a href="#%e5%be%8c%e8%a8%98" class="header-mark"></a>後記</h3><ul>
+<li>總算把 github page 建起來，並套上 hugo 框架，真的好不容易啊，只能說好多坑，所以先把還記得都列上去了，之後有想到再新增吧 XD</li>
+</ul></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-10-16</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/my-hugo-blog/hugo-setting/index.md target="_blank" rel="noopener noreferrer">Read markdown</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/my-hugo-blog/tags/hugo/">hugo</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/my-hugo-blog/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/my-hugo-blog/isbn-978-957-32-9553-2/" class="next" rel="next" title="[ 心得｜摘要｜節錄 ] 表達力決定你是誰: 提升表達力，成為自己期待的樣子">[ 心得｜摘要｜節錄 ] 表達力決定你是誰: 提升表達力，成為自己期待的樣子<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.104.3">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/my-hugo-blog/" target="_blank" rel="noopener noreferrer">nofear195</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/my-hugo-blog/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/my-hugo-blog/js/theme.min.js" defer></script></div>
+
+<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://twikoo-api-fawn.vercel.app/","lang":"en"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/my-hugo-blog/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"sharerjs":true,"table":{"sort":true}};</script><script type="text/javascript" src="/my-hugo-blog/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/twikoo.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/my-hugo-blog/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/my-hugo-blog/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/katex/copy-tex.min.css"></noscript></div>
+</body>
+
+</html>
