@@ -5,7 +5,7 @@ defaultContentLanguage = "en"
 languageCode = "en"
 title = "nofear195's blog"
 hasCJKLanguage = true
-
+enableEmoji = true
 # Change the default theme to be use when building the site with Hugo
 theme = "DoIt"
 [toc]
