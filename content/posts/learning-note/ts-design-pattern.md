@@ -88,3 +88,25 @@ For more practice code, please click the github repository [ts-design-pattern](h
     2. 依照需求在不同的實作階層上，實作該共同功能
     3. 使用該類別的實體時，可動態依照實作類別，動態附加功能於實體上
 
+## Observer
+
+- Practice code in TypeScrpt : [Observer pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/observer)
+- 概念: 在觀察者(observer) 介面中，提供方法供被觀察者(subject)一次呼叫多個實作其介面的類別，用於處理物件之間一對多的連動關係
+- 方法:
+    1. 建立 obserser 介面，提供被呼叫 or 觸發時對應的方法
+    2. 依照不同的需求，實作被觸發時，對應的做法
+    3. 在一個被觀察的物件 (subject) 中, 建立一個可以觸發 observer 的方法，達到一對多的連動與互動的效果
+
+## Command
+
+- Practice code in TypeScrpt : [Command pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/command)
+- 概念: 將 command(request) 封裝成不同的物件形式,用於分源分流處理不同的 command(request)
+- 方法:
+    1. 建立 receiver 介面方法，並依照需做分別去實作
+    2. 建立 command 介面，實作可接收 receviver 實體，與呼叫該 receiver 方法的類別
+    3. 建立 invoker 類別，呼叫不同的 command
+- 特色:
+    1. 建立一個中介的角色 invoker, 用來轉接所有的 command 給對應的 receiver
+    2. invoker 可將不同的 command 進行處理的優先順序排列
+    3. invoker 可自行控管不同 receiver 可接收的 coomand 數量, 也可取消未處理的 command
+    4. invoker 可將不同的 command 進行處理的優先順序排列
