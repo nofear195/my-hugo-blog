@@ -16,15 +16,11 @@ lightgallery: true
 For more practice code, please click the github repository --> https://github.com/nofear195/ts-design-pattern :smile: :smile: :smile:
 <!--more-->
 
-{{< admonition type=info title="infomation"  >}}
-For more practice code, please click the github repository [ts-design-pattern](https://github.com/nofear195/ts-design-pattern) :smile: :smile: :smile:
-{{< /admonition >}}
-
 ## Reference
 
 1. [7天學會設計模式：設計模式也可以這樣學](https://www.drmaster.com.tw/Bookinfo.asp?BookID=MP22251)
     - 書中程式碼範例撰寫語言為 JAVA
-    - 筆者參照書中程式碼，依照練習需求改寫為 TypeScript
+    - 本篇文章參照書中程式碼，並依照練習需求改寫為用 TypeScript 撰寫
 2. [Jest + TypeScript：建置測試環境](https://titangene.github.io/article/jest-typescript.html)
 
 ## Factory
@@ -146,3 +142,50 @@ For more practice code, please click the github repository [ts-design-pattern](h
     3. 實作介面演算法結構的 template 類別實體
     4. 在 template 實體中，加入 hook，用來判定如何切換不同的 template 實體
     5. 定義 function 函式，用來將 input 套用在當下的 template，並返回與 input 相同的類別，供給下一次套用 template 使用
+
+## Composite
+
+- Practice code in TypeScrpt : [Composite pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/composite)
+- 概念: 用於處理樹狀結構的資料，即當資料有階層式的關係，而每個階層都可抽象出共同行為時
+- 方法:
+    1. 定義一個抽象,搜集階層中 node 共同擁有的行為或方法，讓所有實體的 node 都可以去繼承並實作
+    2. 在 node 介面上加入 add, remove 等新增或刪除的方式，用於改變當前樹狀結構的方式
+    3. 分別以各個階層所需要的實作方式進行實作，eg: root, child, leaf 等
+
+## State
+
+- Practice code in TypeScrpt : [State pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/state)
+- 概念: 讓物件的不同狀態封裝成各式的類別，用來表達物件會隨著不同狀態而有著不同的行為
+- 方法:
+    1. 在一個需要表達不同狀態的物件中，定義一個可切換當前屬性狀態的函式
+    2. 定義不同 state 物件，接收當前須改變的狀態物件，改變其屬性狀態
+    3. 在不同 state 物件中，插入可以再變更成另一種 state 物件的條件方式，用於再使 input 物件，切換成不同的狀態物件
+- 特色:
+    React framework 中藉著 state 監聽資料的狀態變化，渲染不同的 UI 畫面
+    Redux, Vuex, Pinia 等前端狀態管理工具，都可有效率管控不同的資料狀態被改變的方式與來源，以確保每一個狀態的改變都可以被追蹤
+
+## Proxy
+
+- Practice code in TypeScrpt : [Proxy pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/proxy)
+
+### Dynamic Proxy
+
+- 概念: 為被代理的物件提供一個緩衝，讓被代理的物件完成初始化或某些動作前，執行其他的動作(代理)
+- 方法:
+    1. 將需要被代理的物件方法作為一個動態代理的抽象
+    2. 實作抽象的行為，並在初始化中放入被代理的物件
+    3. 讓 client 只能藉由動態代理的方式，呼叫被代理物件的方法
+- 特色:
+    1. 包覆需要代理的物件，使其可以有餘裕完成本身需要被執行方法或執行初始化
+    2. 與 decorator pattern 方法不同在於 decorator 可以包裹很多層，而 proxy 一般只會包裹一層
+    3. 可以將 decorator pattern 作為 proxy pattern 的延伸或特化版
+
+### Protect Proxy
+
+- 概念: 為被代理的物件提供一種保護，限制外在行為對其的存取行為
+- 方法:
+    1. 分析需要被代理的對象物件不同行為，形成一個抽象
+    2. 實作抽象的行為，並在初始化中放入被代理的物件
+    3. 將需要限制存取行為的方法，回傳為一個空值或訊息，藉以限制被代理的物件其屬性被更改
+- 特色:
+    1. 當引用第三方撰寫的程式時，可藉由限制代理作為一個前置的保護方式，用來避免引用的程式被誤用或亂用，而造成非預期的副作用
