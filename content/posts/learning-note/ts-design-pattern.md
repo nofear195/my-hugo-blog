@@ -1,6 +1,7 @@
 ---
 title: "Design Patterns in TypeScript"
 date: 2022-12-31
+lastmod: 2023-01-02
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -11,6 +12,9 @@ series: [""]
 lightgallery: true
 
 ---
+
+For more practice code, please click the github repository --> https://github.com/nofear195/ts-design-pattern :smile: :smile: :smile:
+<!--more-->
 
 {{< admonition type=info title="infomation"  >}}
 For more practice code, please click the github repository [ts-design-pattern](https://github.com/nofear195/ts-design-pattern) :smile: :smile: :smile:
@@ -110,3 +114,35 @@ For more practice code, please click the github repository [ts-design-pattern](h
     2. invoker 可將不同的 command 進行處理的優先順序排列
     3. invoker 可自行控管不同 receiver 可接收的 coomand 數量, 也可取消未處理的 command
     4. invoker 可將不同的 command 進行處理的優先順序排列
+
+## Adapter
+
+- Practice code in TypeScrpt : [Adapter pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/adapter)
+- 概念: 一個轉接器的功能，讓原本無法作用功能的實體，載入另一個可執行功能的實體，使原本的實體可藉由載入的實體，去完成原本無法作用的功能
+- 方法:
+    1. 在 adapter 初始化中，放入之後需要轉接功能的實體
+    2. 定義 function 函式, 用來呼叫需要轉接實體的功能
+
+## Facade
+
+- Practice code in TypeScrpt : [Facade pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/facade)
+- 概念: 使用一個類別，用來封裝直接與各個子系統的功能，並可以製作一連串子系統之間的互動的功能
+- 方法:
+    1. 在 facade 類別的初始化中，放入所有會互相作用的類別實體
+    2. 定義 function 函式, 用來定義內部類別實體的相互作用方式
+- 特色:
+    1. 封裝一個大系統中，各個子系統間的互動方式，外部行為者只需要跟 facade 的介面進行互動即可
+    2. 如同遙控器一樣，整合各式的工具，供使用者可以方便去使用
+    3. web service 中的 MVC 架構即是採用此 pattern 的做法
+    4. 為最常見且被應用的 pattern 之一
+
+## Template
+
+- Practice code in TypeScrpt : [Template pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/template)
+- 概念: 定義一套方法或流程(演算法)的結構，但實作的細節則由實作的子類別去實現，並藉由 hook 去切換不同的實作方法
+- 方法:
+    1. 定義一個實體作為 template 的 input, 供 template 類別改變其內容
+    2. 定義 template 介面方法，表達演算法的結構
+    3. 實作介面演算法結構的 template 類別實體
+    4. 在 template 實體中，加入 hook，用來判定如何切換不同的 template 實體
+    5. 定義 function 函式，用來將 input 套用在當下的 template，並返回與 input 相同的類別，供給下一次套用 template 使用
