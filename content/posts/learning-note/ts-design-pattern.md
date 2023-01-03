@@ -1,7 +1,7 @@
 ---
 title: "Design Patterns in TypeScript"
 date: 2022-12-31
-lastmod: 2023-01-02
+lastmod: 2023-01-04
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -161,8 +161,8 @@ For more practice code, please click the github repository --> https://github.co
     2. 定義不同 state 物件，接收當前須改變的狀態物件，改變其屬性狀態
     3. 在不同 state 物件中，插入可以再變更成另一種 state 物件的條件方式，用於再使 input 物件，切換成不同的狀態物件
 - 特色:
-    React framework 中藉著 state 監聽資料的狀態變化，渲染不同的 UI 畫面
-    Redux, Vuex, Pinia 等前端狀態管理工具，都可有效率管控不同的資料狀態被改變的方式與來源，以確保每一個狀態的改變都可以被追蹤
+    1. React framework 中藉著 state 監聽資料的狀態變化，渲染不同的 UI 畫面
+    2. Redux, Vuex, Pinia 等前端狀態管理工具，都可有效率管控不同的資料狀態被改變的方式與來源，以確保每一個狀態的改變都可以被追蹤
 
 ## Proxy
 
@@ -189,3 +189,35 @@ For more practice code, please click the github repository --> https://github.co
     3. 將需要限制存取行為的方法，回傳為一個空值或訊息，藉以限制被代理的物件其屬性被更改
 - 特色:
     1. 當引用第三方撰寫的程式時，可藉由限制代理作為一個前置的保護方式，用來避免引用的程式被誤用或亂用，而造成非預期的副作用
+
+## Builder
+
+- Practice code in TypeScrpt : [Builder pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/builder)
+- 概念: 建立一個 director(指揮者)類別，用來封裝並指揮一個由多個不同類別組成的複雜實體，其類別實體化過程的先後順序
+- 方法:
+    1. 拆解複雜實體的結構來源，找出其引入的類別實體
+    2. 找出複雜實體在實體化過程中，其內部引入類別的使用順序
+    3. 在 director 類別初始化中，放入一個尚未引入內別類別的複雜實體
+    4. 在 director 類別中建立組成函式，並依照分析後的順序，逐一將需要引入的類別實體，放入 director 內部的複雜實體中
+- 特色:
+    1. 如同指派一個師傅，由他去指揮一個團隊去組裝一個機器人，由一個機器人空殼，至能作用各式功能的機器人助手
+    2. 與 abstract factory pattern 的差異，在於 Builder pattern 強調其由無到有的 “順序”
+
+## Chain Of Responsibility
+
+- Practice code in TypeScrpt : [Chain Of Responsibility pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/chainOfResponsibility)
+- 概念: 定義一個介面函式，讓不同的物件處理 (實作) 同一個請求 (request)，並讓實作介面者(handler) 在達成特定條件下傳遞給另一個 handler 處理相同的請求
+- 方法:
+    1. 將請求 (request) 這個動作封裝成一個類別，並設置可傳遞給不同 handler 呼叫的條件屬性與對應的存取函示，即定義一個責任鏈(chain of resposibility)
+    2. 將可處理 request 的 handler 抽象成一個介面(抽象類別)，並在初始化中，放入在達成請求時，下個處理相同請求的 handler
+    3. 實作 handler 的抽象類別，定義應對請求方式的條件，並處理請求
+- 特色:
+    1. 相較 if else 的方式，包裝在達成條件下，呼叫相關的實體處理相同的請求，使用此 pattern 可以在不更動 hanlder 前提下，藉由更動 request 的屬性，設置可以傳達到某一個責任鏈階段的 handler
+
+## Interpreter
+
+- Practice code in TypeScrpt : [Interpreter pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/interpreter)
+- 概念: 一系列的翻譯工具、解譯器，用來表達或轉換輸入的語言文字意思
+- 方法:
+    1. 定義轉換輸入的界面函示，然後實作各式的翻譯方法
+    2. 走訪輸入的文字並設置不同的條件，用以切換不同的翻譯方法
