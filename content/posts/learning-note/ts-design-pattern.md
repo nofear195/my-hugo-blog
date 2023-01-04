@@ -221,3 +221,15 @@ For more practice code, please click the github repository --> https://github.co
 - 方法:
     1. 定義轉換輸入的界面函示，然後實作各式的翻譯方法
     2. 走訪輸入的文字並設置不同的條件，用以切換不同的翻譯方法
+
+## Mediator
+
+- Practice code in TypeScrpt : [Mediator pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/mediator)
+- 概念: 一個中介(mediator)物件，用來傳遞、管理多個物件的交互作用
+- 方法:
+    1. 定義 mediator 的屬性，用來區分接收物件的角色 (eg: 用不同的 list 存放不同的物件)
+    2. 定義 mediator 的靜態方法 (static method)， 用來存放所有需要交互的物件
+    3. 定義 mediator 擁有交互物件所持有的交互方法，在交互物件需要進行交互時，由 mediator 進行實際上的交互作用
+- 特色:
+    1. 當多個物件具有交互作用時，可使用中介當任中間的傳遞角色，降低交互物件之間的耦合性
+    2. 如同聊天軟體的角色，說話的雙方並非直接交談，而是透過軟體，將雙方要傳遞的話語，進行搜集並傳遞給雙方
