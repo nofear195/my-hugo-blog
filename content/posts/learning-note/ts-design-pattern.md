@@ -1,7 +1,7 @@
 ---
 title: "Design Patterns in TypeScript"
 date: 2022-12-31
-lastmod: 2023-01-04
+lastmod: 2023-01-06
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -233,3 +233,51 @@ For more practice code, please click the github repository --> https://github.co
 - 特色:
     1. 當多個物件具有交互作用時，可使用中介當任中間的傳遞角色，降低交互物件之間的耦合性
     2. 如同聊天軟體的角色，說話的雙方並非直接交談，而是透過軟體，將雙方要傳遞的話語，進行搜集並傳遞給雙方
+
+## Prototype
+
+- Practice code in TypeScrpt : [Prototype pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/prototype)
+- 概念: 直接複製原有的物件，而非直接重新建立一個新的物件
+- 方法:
+    1. 使用 shallow copy (淺拷貝) 的方式，將新物件與舊物件指向共同的記憶體位置
+    2. 使用 deep copy (深拷貝) 的方式，將舊物件的內容複製到不同的記憶體位置，指向給新的物件使用
+
+## Bridge
+
+- Practice code in TypeScrpt : [Bridge pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/bridge)
+- 概念: 將類別的抽象與實作方式做切分，讓各自的行為變化不會被相互引響
+- 方法:
+    1. 在抽象類別中，加入其他的類別，由其他的類別實作抽象類別不想影響本身實作類別的函式或方法
+    2. 在抽象類別的實作中，用 super 的方式建構抽象類別加入的類別實體，並為其做使用
+
+- 特色:
+    1. 在抽象類別之間，建立一個聯絡的橋樑做互動，其各自的的實體可藉由建立的橋樑進行互動，同時可保持各自的獨立性
+
+## Memento
+
+- Practice code in TypeScrpt : [Memento pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/memento)
+- 概念: 備份、備忘錄，將物件的屬性，用另一個物件作儲存，使之可以隨時被調用，用以還原物件的狀態
+- 方法:
+    1. 建立一個備忘錄的物件 (memento) 其屬性包含所有要備份物件 (originator) 的屬性
+    2. 在 originator 的函式中，建立存取 memento 的方法函示
+    3. 另外再建立一個 recorder 存放所有的 memento，並建立每個 memento 被 originator 存取的方式與順序
+
+## Flyweight
+
+- Practice code in TypeScrpt : [Flyweight pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/flyweight)
+- 概念: 為降低系統負荷，讓物件的某些屬性可以隨著需求隨時做變化
+    1. 在類別中區分外在屬性與內部屬性
+    2. 內部屬性由所有類別所共用
+    3. 外部屬性則可以依照需求而置換屬性內容
+    4. 建立一個產生類別實體的工廠，用來生產相同類別但不同內部屬性內容的實體，並管理取得各種實體產生的方式
+
+## Visitor
+
+- Practice code in TypeScrpt : [Visitor pattern](https://github.com/nofear195/ts-design-pattern/tree/main/src/visitor)
+- 概念: 在實作相同抽象的實體群集中(collation)，使用不同的 visitor 呼叫抽象中定義的函式，讓群集中所有的實體去個別執行其實作的方法
+    1. 在抽象類別中 (abstract class)，定義抽象函示 (abstract function)，由繼承的類別依照各自的需求實作
+    2. 建立一個 collation 類別存放所有實作繼承抽象類別的實體
+    3. 建立 vistor 抽象的介面，其中定義相同名稱的函式，供 collation 內的實體在實作的抽象函式中進行呼叫
+    4. 在實作 vistor 介面的類別中，使用多載 (overload) 方式，定義 collation 中各個實體的執行方式
+- 特色:
+    1. visitor 將物件的行為做封裝，讓個別物件在 collation 中能保留各自的特性
