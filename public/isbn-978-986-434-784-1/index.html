@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title class="pjax-title">[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求 - nofear195&#39;s blog</title><meta name="Description" content="This is Hugo Site"><meta property="og:title" content="[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求" />
+    <title>[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求 - nofear195&#39;s blog</title><meta name="Description" content="This is Hugo Site"><meta property="og:title" content="[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求" />
 <meta property="og:description" content="ISBN 978-986-434-784-1 (1.物件導向 2.軟體研發)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://nofear195.github.io/my-hugo-blog/isbn-978-986-434-784-1/" /><meta property="og:image" content="https://nofear195.github.io/logo.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-11-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-11-30T00:00:00+00:00" /><meta property="og:site_name" content="nofear195&#39;s blog" />
+<meta property="article:published_time" content="2022-12-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-12T00:00:00+00:00" /><meta property="og:site_name" content="nofear195&#39;s blog" />
 
 
 
@@ -22,7 +22,7 @@
 <meta name="application-name" content="DoIt">
 <meta name="apple-mobile-web-app-title" content="DoIt">
 
-<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://nofear195.github.io/my-hugo-blog/isbn-978-986-434-784-1/" /><link rel="prev" href="https://nofear195.github.io/my-hugo-blog/sleep-r90/" /><link rel="stylesheet" href="/my-hugo-blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/my-hugo-blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/fontawesome-free/all.min.css">
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://nofear195.github.io/my-hugo-blog/isbn-978-986-434-784-1/" /><link rel="prev" href="https://nofear195.github.io/my-hugo-blog/sleep-r90/" /><link rel="next" href="https://nofear195.github.io/my-hugo-blog/isbn-978-986-137-330-0/" /><link rel="stylesheet" href="/my-hugo-blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/my-hugo-blog/css/color.css"><link rel="stylesheet" href="/my-hugo-blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -33,8 +33,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/nofear195.github.io\/my-hugo-blog\/isbn-978-986-434-784-1\/"
-        },"genre": "posts","wordcount":  476 ,
-        "url": "https:\/\/nofear195.github.io\/my-hugo-blog\/isbn-978-986-434-784-1\/","datePublished": "2022-11-30T00:00:00+00:00","dateModified": "2022-11-30T00:00:00+00:00","publisher": {
+        },"genre": "posts","wordcount":  3049 ,
+        "url": "https:\/\/nofear195.github.io\/my-hugo-blog\/isbn-978-986-434-784-1\/","datePublished": "2022-12-03T00:00:00+00:00","dateModified": "2023-01-12T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "nofear195"},"authors": [{
                         "@type": "Person",
@@ -60,16 +60,16 @@
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/my-hugo-blog/about/"> About Me </a><a class="menu-item" href="/my-hugo-blog/posts/"> Posts </a><a class="menu-item" href="/my-hugo-blog/categories/"> Categories </a><a class="menu-item" href="/my-hugo-blog/series/"> Series </a><a class="menu-item" href="/my-hugo-blog/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-select" title="Switch Theme">
+                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw"></i>
                     <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
                         <option value="light">Light</option>
@@ -93,20 +93,20 @@
         <div class="menu" id="menu-mobile"><div class="search-wrapper">
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
-                        <a href="#" onclick="return false;" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <a href="#" onclick="return false;" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
                             <i class="fas fa-times-circle fa-fw"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
                             <i class="fas fa-spinner fa-fw fa-spin"></i>
                         </span>
                     </div>
-                    <a href="#" onclick="return false;" class="search-cancel" id="search-cancel-mobile">
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/my-hugo-blog/about/" title="">About Me</a><a class="menu-item" href="/my-hugo-blog/posts/" title="">Posts</a><a class="menu-item" href="/my-hugo-blog/categories/" title="">Categories</a><a class="menu-item" href="/my-hugo-blog/series/" title="">Series</a><a class="menu-item" href="/my-hugo-blog/tags/" title="">Tags</a><a href="#" onclick="return false;" class="menu-item theme-select" title="Switch Theme">
+                </div><a class="menu-item" href="/my-hugo-blog/about/" title="">About Me</a><a class="menu-item" href="/my-hugo-blog/posts/" title="">Posts</a><a class="menu-item" href="/my-hugo-blog/categories/" title="">Categories</a><a class="menu-item" href="/my-hugo-blog/series/" title="">Series</a><a class="menu-item" href="/my-hugo-blog/tags/" title="">Tags</a><a href="#" class="menu-item theme-select" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
                 <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
                     <option value="light">Light</option>
@@ -128,15 +128,44 @@
         <h2 class="toc-title">Contents</h2>
         <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
   <ul>
-    <li><a href="#物件導向理論">物件導向理論</a></li>
+    <li><a href="#物件導向理論">物件導向理論</a>
+      <ul>
+        <li><a href="#類別class">類別(class)</a></li>
+        <li><a href="#物件object">物件(object)</a></li>
+        <li><a href="#介面interface">介面(interface)</a></li>
+        <li><a href="#抽象abstract">抽象(abstract)</a></li>
+        <li><a href="#抽象類別abstract-class">抽象類別(abstract class)</a></li>
+        <li><a href="#物件導向核心特徵">物件導向核心特徵</a></li>
+      </ul>
+    </li>
+    <li><a href="#物件導向方法">物件導向方法</a>
+      <ul>
+        <li><a href="#物件導向開發流程">物件導向開發流程</a></li>
+        <li><a href="#需求模型">需求模型</a></li>
+        <li><a href="#領域模型">領域模型</a></li>
+        <li><a href="#設計模型">設計模型</a></li>
+        <li><a href="#實作模型">實作模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#物件導向技巧">物件導向技巧</a>
+      <ul>
+        <li><a href="#設計原則">設計原則</a>
+          <ul>
+            <li><a href="#類別設計原則-solid-principle">類別設計原則 S.O.L.I.D. principle</a></li>
+          </ul>
+        </li>
+        <li><a href="#設計模式">設計模式</a></li>
+        <li><a href="#uml">UML</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
     </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='https://nofear195.github.io/authors/nofear195'>nofear195</a></span>
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='https://nofear195.github.io/my-hugo-blog/authors/nofear195'>nofear195</a></span>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/my-hugo-blog/categories/book-reading/"><i class="far fa-folder fa-fw"></i>book-reading</a></span>&nbsp;<span class="post-category">and</span>&nbsp;<span class="post-series">series <a href="/my-hugo-blog/series/object-oriented/"><i class="far fa-list-alt fa-fw"></i>object oriented</a>&nbsp;<a href="/my-hugo-blog/series/software-development/"><i class="far fa-list-alt fa-fw"></i>software development</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-11-30">2022-11-30</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2022-11-30">2022-11-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;476 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;<span id="/my-hugo-blog/isbn-978-986-434-784-1/" class="leancloud_visitors" data-flag-title="[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-12-03">2022-12-03</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-01-12">2023-01-12</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;3049 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;<span id="/my-hugo-blog/isbn-978-986-434-784-1/" class="leancloud_visitors" data-flag-title="[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count" id=twikoo_visitors></span>&nbsp;views
                     </span>&nbsp;<span id="/my-hugo-blog/isbn-978-986-434-784-1/" class="comment_count" data-flag-title="[ 心得｜摘要｜節錄 ] 編寫程式的邏輯: 如何用物件導向實作複雜的業務需求">
                         <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;comments
@@ -168,13 +197,42 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#物件導向理論">物件導向理論</a></li>
+    <li><a href="#物件導向理論">物件導向理論</a>
+      <ul>
+        <li><a href="#類別class">類別(class)</a></li>
+        <li><a href="#物件object">物件(object)</a></li>
+        <li><a href="#介面interface">介面(interface)</a></li>
+        <li><a href="#抽象abstract">抽象(abstract)</a></li>
+        <li><a href="#抽象類別abstract-class">抽象類別(abstract class)</a></li>
+        <li><a href="#物件導向核心特徵">物件導向核心特徵</a></li>
+      </ul>
+    </li>
+    <li><a href="#物件導向方法">物件導向方法</a>
+      <ul>
+        <li><a href="#物件導向開發流程">物件導向開發流程</a></li>
+        <li><a href="#需求模型">需求模型</a></li>
+        <li><a href="#領域模型">領域模型</a></li>
+        <li><a href="#設計模型">設計模型</a></li>
+        <li><a href="#實作模型">實作模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#物件導向技巧">物件導向技巧</a>
+      <ul>
+        <li><a href="#設計原則">設計原則</a>
+          <ul>
+            <li><a href="#類別設計原則-solid-principle">類別設計原則 S.O.L.I.D. principle</a></li>
+          </ul>
+        </li>
+        <li><a href="#設計模式">設計模式</a></li>
+        <li><a href="#uml">UML</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p>ISBN 978-986-434-784-1 (1.物件導向 2.軟體研發)</p>
 <h2 id="物件導向理論" class="headerLink">
-    <a href="#%e7%89%a9%e4%bb%b6%e5%b0%8e%e5%90%91%e7%90%86%e8%ab%96" class="header-mark"></a>物件導向理論</h2><p><strong>類別(class)</strong> :</p>
-<ul>
+    <a href="#%e7%89%a9%e4%bb%b6%e5%b0%8e%e5%90%91%e7%90%86%e8%ab%96" class="header-mark"></a>物件導向理論</h2><h3 id="類別class" class="headerLink">
+    <a href="#%e9%a1%9e%e5%88%a5class" class="header-mark"></a>類別(class)</h3><ul>
 <li>
 <p>概念：一組相似事物的統稱</p>
 <ul>
@@ -202,8 +260,8 @@
 </ol>
 </li>
 </ul>
-<p><strong>物件(object)</strong> :</p>
-<ul>
+<h3 id="物件object" class="headerLink">
+    <a href="#%e7%89%a9%e4%bb%b6object" class="header-mark"></a>物件(object)</h3><ul>
 <li>
 <p>概念：一個具體、真實存在的類別</p>
 </li>
@@ -241,7 +299,287 @@
 </li>
 </ul>
 </li>
-</ul></div>
+</ul>
+<h3 id="介面interface" class="headerLink">
+    <a href="#%e4%bb%8b%e9%9d%a2interface" class="header-mark"></a>介面(interface)</h3><ul>
+<li>
+<p>概念：一組相關、有互動功能的點集合</p>
+<ul>
+<li>inter：互相，兩方的互動</li>
+<li>face：面，點的集合，相對應於點、線</li>
+</ul>
+</li>
+<li>
+<p>定義概念拆解：</p>
+<ol>
+<li>相關：彼此相關的功能作用，eg: USB 介面、網路介面、</li>
+<li>互動：可作用於不同物體之間的互動，非單一方面</li>
+<li>定義：只做定義，但不涉具體實作 =&gt; 一個互動雙方的“約定”，具體的實作方式由實際互動方制定即可</li>
+<li>集合：多個功能點的集合，非一個具體的功能點</li>
+</ol>
+</li>
+<li>
+<p>特性：</p>
+<ul>
+<li>在希望某群物件有共同的屬性或功能下使用</li>
+<li>在不清楚某群物件是否屬於同一個類別下使用</li>
+<li>eg: 在面對處理的物體是動物，但又希望這個動物按照所需求的方式進行活動 (人、狗、其他動物)</li>
+</ul>
+</li>
+</ul>
+<h3 id="抽象abstract" class="headerLink">
+    <a href="#%e6%8a%bd%e8%b1%a1abstract" class="header-mark"></a>抽象(abstract)</h3><ul>
+<li>
+<p>概念：抽取比較像的部分出來</p>
+</li>
+<li>
+<p>結合物件的概念：抽取多個物件或類別中比較像的部分</p>
+</li>
+<li>
+<p>特性：</p>
+<ul>
+<li>可劃分具有“相似”的類別</li>
+<li>主要目的：隔離關注點，降低複雜度</li>
+<li>主要用於發現新類別的方法 =&gt; 先抽象共同點，在拉出一個新的類別</li>
+<li>eg: (developer,maintainer)=&gt; people, (developer,dog) =&gt; animal</li>
+</ul>
+</li>
+</ul>
+<h3 id="抽象類別abstract-class" class="headerLink">
+    <a href="#%e6%8a%bd%e8%b1%a1%e9%a1%9e%e5%88%a5abstract-class" class="header-mark"></a>抽象類別(abstract class)</h3><ul>
+<li>
+<p>概念：根據類別共有的特性，再進行抽取比較像的部分</p>
+</li>
+<li>
+<p>特性：</p>
+<ul>
+<li>本質上還是類別，但只能用於繼承，無法用來產生實體的物件</li>
+<li>相對於普通的軟體類別由現實類別抽象模擬而出，抽象類別則是更高級的抽象</li>
+<li>抽象類別是由普通軟體類別抽象模擬而成</li>
+<li>eg: 吃“水果”(抽象類別)，實際上是吃“蘋果、香蕉”(普通類別)</li>
+<li>同時具備普通類別與介面的部分特性，為介於兩者之間的概念</li>
+</ul>
+</li>
+<li>
+<p>與普通類別的差異：</p>
+<ul>
+<li>繼承：
+<ul>
+<li>普通類別：子類別透過繼承父類別，即可獲得父類別的方法</li>
+<li>抽象類別：若有定義抽象方法(只有宣告，但沒有實作)，則子類別需要自己去實作方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>與介面的差異：</p>
+<ul>
+<li>概念：
+<ul>
+<li>介面：強調物件之間的相似性，但僅限於方法宣告，缺少定義上的相似</li>
+<li>抽象類別：為類別，強調一組事物的相似性，包含屬性與方法</li>
+</ul>
+</li>
+<li>實作：
+<ul>
+<li>介面：需要逐一實作個別物件的屬性與方法</li>
+<li>抽象類別：若有定義抽象方法，則需要為繼承的物件個別實作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="物件導向核心特徵" class="headerLink">
+    <a href="#%e7%89%a9%e4%bb%b6%e5%b0%8e%e5%90%91%e6%a0%b8%e5%bf%83%e7%89%b9%e5%be%b5" class="header-mark"></a>物件導向核心特徵</h3><ol>
+<li>
+<p>封裝 (encapsulation)</p>
+<ul>
+<li>概念：使用類別，將一組相似事物的特性與行為包裝起來</li>
+<li>作用：
+<ul>
+<li>保護隱私
+<ul>
+<li>對類別內個屬性的修改，只能通過內部的類別方法存取</li>
+</ul>
+</li>
+<li>隔離複雜度
+<ul>
+<li>個別類別只需負責自己的實作功能即可</li>
+<li>類別外在的使用者，只需呼叫類別提供的方法即可，不需了解其內部的實作方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法：
+<ul>
+<li>public：不進行封裝，直接對外公開</li>
+<li>protected：只對 child,與 friend 類別公開</li>
+<li>private：完全不公開</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>繼承 (inheritance)</p>
+<ul>
+<li>概念：遺傳，承襲 parent 的特性與行為</li>
+<li>與抽象的差異
+<ul>
+<li>抽象: 分析和設計過程的一個動作、一個技巧，透過抽象出類別</li>
+<li>繼承: 實作過程的一個動作，根據抽象的結果，透過程式語言的特性，完成抽象的模擬</li>
+<li>抽象與繼承的關係：“承先啟後”，先有抽象，再由抽象得出類別，最後由繼承表達抽象的結果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>多型(polymorphism)</p>
+<ul>
+<li>概念：“多胎”，使用指向父類別的指標或參考，便能呼叫子類別的物件</li>
+<li>特性：
+<ul>
+<li>遮罩對於子物件的差異，允許呼叫者撰寫通用性的程式碼</li>
+<li>當呼叫函式時，帶入指定為 parent 的類型時，可以帶入 children 的物件屬性，並在內部使用 parent 定義的函式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="物件導向方法" class="headerLink">
+    <a href="#%e7%89%a9%e4%bb%b6%e5%b0%8e%e5%90%91%e6%96%b9%e6%b3%95" class="header-mark"></a>物件導向方法</h2><h3 id="物件導向開發流程" class="headerLink">
+    <a href="#%e7%89%a9%e4%bb%b6%e5%b0%8e%e5%90%91%e9%96%8b%e7%99%bc%e6%b5%81%e7%a8%8b" class="header-mark"></a>物件導向開發流程</h3><ol>
+<li>
+<p>需求模型：透過和客戶溝通，結合行業經驗和知識，明確刻畫客戶的需求</p>
+</li>
+<li>
+<p>領域模型：根據需求模型，提煉出領域相關的概念，為後面的物件導向設計打下基礎</p>
+</li>
+<li>
+<p>設計模型：以領域模型為基礎，綜合物件導向的各種設計技巧，完成類別的設計</p>
+</li>
+<li>
+<p>實作模型：以設計模型為基礎，將設計模型轉譯為具體的語言實作，完成程式碼的撰寫</p>
+</li>
+</ol>
+<div class="mermaid" id="id-5"></div>
+<h3 id="需求模型" class="headerLink">
+    <a href="#%e9%9c%80%e6%b1%82%e6%a8%a1%e5%9e%8b" class="header-mark"></a>需求模型</h3><h3 id="領域模型" class="headerLink">
+    <a href="#%e9%a0%98%e5%9f%9f%e6%a8%a1%e5%9e%8b" class="header-mark"></a>領域模型</h3><h3 id="設計模型" class="headerLink">
+    <a href="#%e8%a8%ad%e8%a8%88%e6%a8%a1%e5%9e%8b" class="header-mark"></a>設計模型</h3><h3 id="實作模型" class="headerLink">
+    <a href="#%e5%af%a6%e4%bd%9c%e6%a8%a1%e5%9e%8b" class="header-mark"></a>實作模型</h3><h2 id="物件導向技巧" class="headerLink">
+    <a href="#%e7%89%a9%e4%bb%b6%e5%b0%8e%e5%90%91%e6%8a%80%e5%b7%a7" class="header-mark"></a>物件導向技巧</h2><h3 id="設計原則" class="headerLink">
+    <a href="#%e8%a8%ad%e8%a8%88%e5%8e%9f%e5%89%87" class="header-mark"></a>設計原則</h3><ol>
+<li>
+<p>內聚(Cohesion)</p>
+<ul>
+<li>概念：“凝聚力”，模組 (函數、類別、套件、子系統) 內的元素，是否都專注於模組所賦予的職責</li>
+<li>較佳的內聚形式：功能內聚
+<ul>
+<li>案例概念：進行 CRUD 操作的類別，內部的元素間雖沒相關互動，但皆專注於資料的操作與存取</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>耦合(Coupling)、依賴(Dependency)</p>
+<ul>
+<li>概念：模組間的依賴程度，某個模組Ａ使用了另一個模組Ｂ的元素完成特定功能</li>
+<li>最差的耦合形式：內容耦合
+<ul>
+<li>概念：模組Ｂ修改模組Ａ所依賴的內容(屬性)時，模組Ａ跟模組Ｂ都必須同步修改</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>設計原則：高內聚低耦合</p>
+<ul>
+<li>目的：降低複雜性</li>
+<li>反向思維：低內聚 or 高耦合 會使系統產生較多的不確性，即不穩定</li>
+<li>實作想法：在高內聚與低耦合間取得平衡，不偏向任何一端</li>
+</ul>
+</li>
+</ol>
+<h4 id="類別設計原則-solid-principle" class="headerLink">
+    <a href="#%e9%a1%9e%e5%88%a5%e8%a8%ad%e8%a8%88%e5%8e%9f%e5%89%87-solid-principle" class="header-mark"></a>類別設計原則 S.O.L.I.D. principle</h4><ol>
+<li>
+<p>SRP (Single Responsibility Principle, 單一職責原則)</p>
+<ul>
+<li>概念：一組類別只需負責一組 &ldquo;相關&rdquo; 的事, 即一個類別有多個方法，且相互關聯</li>
+<li>職責定義：
+<ol>
+<li>由其他的類別視角來決定</li>
+<li>包含多個相關的功能</li>
+</ol>
+</li>
+<li>適用範圍：基礎類別</li>
+<li>不適用範圍 : 聚合類別 (根據基礎類別建構的複雜結構)。
+<ul>
+<li>解法：優先使用多物件作組合，而非類別繼承</li>
+</ul>
+</li>
+<li>應用場景：用於類別的設計</li>
+</ul>
+</li>
+<li>
+<p>OCP (Open-Closed Principle, 開放封閉原則)</p>
+<ul>
+<li>概念：在使用者不改變操作方法的條件下，提供者增加新的功能</li>
+<li>含義：對提供者(provider)開放擴充，對使用者(consumer)關閉修改 (open for provider extension, closed for consumer modification)</li>
+<li>適用原則：定義相同的介面(provider)進行實作(consumer實作)，即 “透過介面進行互動”</li>
+<li>適用範圍：
+<ul>
+<li>類別之間使用 interface 互動</li>
+<li>模組和模組、系統和系統之間使用 協定 互動，ex: HTTP, SOAP</li>
+</ul>
+</li>
+<li>應用場景：整體架構的設計
+<ul>
+<li>一般能符合 LSP、ISP、DIP，則可符合 OCP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>LSP (Liskov Substitution Principle, Liskov 替換原則)</p>
+<ul>
+<li>概念：定義子類別物件繼承來自父類別的規範
+<ol>
+<li>子類別必須實作 or 繼承父類別所有的公有方法 (public method)</li>
+<li>子類別每個方法的 input 參數必須與父類別方法一致，eg: 應用使用 “多型” 時，大多是定義父類別作為 input 的參數</li>
+<li>子類別每個方法的 output 必須多於父類別 (至少能完成父類別定義的輸出)</li>
+</ol>
+</li>
+<li>適用原則：專注於定義方法相同的 input 與 output，但不包含其中的過程</li>
+<li>應用場景：用於類別的繼承，與 DIP 相輔相成，由 interface、abstract class 衍生出新的子類別</li>
+</ul>
+</li>
+<li>
+<p>ISP (Interface Seggregation Principle, 介面隔離原則)</p>
+<ul>
+<li>概念：類別內有使用到的介面，應該照個別使用需求去呼叫，而非使用單一個大而全面的介面</li>
+<li>含義：物件內需要非內聚的介面，consumer 不需要知道整個類別，只需要知道有內聚介面的抽象父類別即可</li>
+<li>適用原則：不應該強迫 consumer 依賴不需要的介面，即 consumer 只使用剛剛好的依賴介面</li>
+<li>應用場景：用於介面的設計</li>
+</ul>
+</li>
+<li>
+<p>DIP (Dependency Inversion Principle, 依賴反轉原則)</p>
+<ul>
+<li>概念：使用抽象的方法，將類別間的依賴、耦合性降低</li>
+<li>含義：(底層模組：一個完整無法再分割的邏輯，高層模組：表達的邏輯是由多個底層模組成)
+<ol>
+<li>高層模組不應該直接依賴底層模組，兩個都應該依賴抽象層</li>
+<li>抽象不能依賴細節，細節(實作)必須依賴抽象(定義)</li>
+</ol>
+</li>
+<li>應用場景：用於提取出抽象，即抽出共同、相似的部分，形成 interface、abstract class、</li>
+</ul>
+</li>
+</ol>
+<h3 id="設計模式" class="headerLink">
+    <a href="#%e8%a8%ad%e8%a8%88%e6%a8%a1%e5%bc%8f" class="header-mark"></a>設計模式</h3><h3 id="uml" class="headerLink">
+    <a href="#uml" class="header-mark"></a>UML</h3></div>
 
         
 
@@ -249,7 +587,7 @@
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2022-11-30</span>
+                <span>Updated on 2023-01-12</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -269,15 +607,16 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/my-hugo-blog/sleep-r90/" class="prev" rel="prev" title="[ 心得｜摘要｜節錄 ]  世界第一的R90高效睡眠法：C羅、貝克漢的睡眠教練教你如何睡得少，也能表現得好"><i class="fas fa-angle-left fa-fw"></i>[ 心得｜摘要｜節錄 ]  世界第一的R90高效睡眠法：C羅、貝克漢的睡眠教練教你如何睡得少，也能表現得好</a></div>
+    <div class="post-nav"><a href="/my-hugo-blog/sleep-r90/" class="prev" rel="prev" title="[ 心得｜摘要｜節錄 ]  世界第一的R90高效睡眠法：C羅、貝克漢的睡眠教練教你如何睡得少，也能表現得好"><i class="fas fa-angle-left fa-fw"></i>[ 心得｜摘要｜節錄 ]  世界第一的R90高效睡眠法：C羅、貝克漢的睡眠教練教你如何睡得少，也能表現得好</a>
+            <a href="/my-hugo-blog/isbn-978-986-137-330-0/" class="next" rel="next" title="[ 心得｜摘要｜節錄 ] 思考の整理學 :最多東大生、京大生讀過的一本書!">[ 心得｜摘要｜節錄 ] 思考の整理學 :最多東大生、京大生讀過的一本書!<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="twikoo"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
             </noscript></div></article></div>
         </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">
-                    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.104.3">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
-                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/my-hugo-blog/" target="_blank" rel="noopener noreferrer">nofear195</a></span></div>
+                    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.110.0">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/my-hugo-blog/" target="_blank" rel="noopener noreferrer">nofear195</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>
@@ -288,10 +627,8 @@
         </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
             <i class="fas fa-comment fa-fw"></i>
         </a>
-    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/my-hugo-blog/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/fuse/fuse.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/topbar/topbar.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/pjax/pjax.min.js"></script><script type="text/javascript" src="/my-hugo-blog/js/theme.min.js" defer></script></div>
-
-<div class="pjax-assets"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://twikoo-api-fawn.vercel.app/","lang":"en"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"graph LR;\n        A(現實物件) --\u003e|歸納概括| B(現實類別)\n    ","id-2":"graph RL;\n        B(現實類別) --\u003e|抽象模擬| C(軟體類別)\n    ","id-3":"graph LR;\n        C(軟體類別) --\u003e|實體化| D(軟體物件)\n        D --\u003e|互動| E(程式)\n    ","id-4":"graph LR;\n    A(現實物件) --\u003e|歸納概括| B(現實類別)\n    B --\u003e|抽象模擬| C(軟體類別)\n    C --\u003e|實體化| D(軟體物件)\n    D --\u003e|互動| E(程式)"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"mermaid":true,"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/my-hugo-blog/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"sharerjs":true,"table":{"sort":true}};</script><script type="text/javascript" src="/my-hugo-blog/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/twikoo.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/mermaid/mermaid.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/mermaid.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/cookieconsent.min.js" defer></script><link rel="stylesheet" href="/my-hugo-blog/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/my-hugo-blog/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/katex/copy-tex.min.css">
-        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/my-hugo-blog/lib/mermaid/mermaid.min.css"></div>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/my-hugo-blog/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/my-hugo-blog/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/my-hugo-blog/lib/mermaid/mermaid.min.css"><link rel="stylesheet" href="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://twikoo-api-fawn.vercel.app/","lang":"en"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"data":{"id-1":"graph LR;\n        A(現實物件) --\u003e|歸納概括| B(現實類別)\n    ","id-2":"graph RL;\n        B(現實類別) --\u003e|抽象模擬| C(軟體類別)\n    ","id-3":"graph LR;\n        C(軟體類別) --\u003e|實體化| D(軟體物件)\n        D --\u003e|互動| E(程式)\n    ","id-4":"graph LR;\n    A(現實物件) --\u003e|歸納概括| B(現實類別)\n    B --\u003e|抽象模擬| C(軟體類別)\n    C --\u003e|實體化| D(軟體物件)\n    D --\u003e|互動| E(程式)","id-5":"graph LR;\n        A(需求模型) --\u003e B(領域模型)\n        B --\u003e C(現設計模型)\n        C --\u003e D(實作模型)"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"mermaid":true,"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/my-hugo-blog/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"sharerjs":true,"table":{"sort":true}};</script><script type="text/javascript" src="/my-hugo-blog/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/twikoo.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/mermaid/mermaid.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/mermaid.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/theme.min.js" defer></script></div>
 </body>
 
 </html>

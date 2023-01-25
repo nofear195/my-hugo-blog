@@ -1,0 +1,13 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>learning-note - Category - nofear195&#39;s blog</title>
+        <link>https://nofear195.github.io/my-hugo-blog/categories/learning-note/</link>
+        <description>learning-note - Category - nofear195&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 31 Dec 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nofear195.github.io/my-hugo-blog/categories/learning-note/" rel="self" type="application/rss+xml" /><item>
+    <title>Design Patterns in TypeScript</title>
+    <link>https://nofear195.github.io/my-hugo-blog/ts-design-pattern/</link>
+    <pubDate>Sat, 31 Dec 2022 00:00:00 &#43;0000</pubDate><author>
+                        <name>nofear195</name><uri>https://github.com/nofear195</uri><email>aaasss777as@gmail.com</email></author><guid>https://nofear195.github.io/my-hugo-blog/ts-design-pattern/</guid>
+    <description><![CDATA[<p>For more practice code, please click the github repository &ndash;&gt; <a href="https://github.com/nofear195/ts-design-pattern" target="_blank" rel="noopener noreferrer">https://github.com/nofear195/ts-design-pattern</a> 😄 😄 😄</p>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>Design Patterns in TypeScript - nofear195&#39;s blog</title><meta name="Description" content="This is Hugo Site"><meta property="og:title" content="Design Patterns in TypeScript" />
+<meta property="og:description" content="For more practice code, please click the github repository &ndash;&gt; https://github.com/nofear195/ts-design-pattern 😄 😄 😄" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nofear195.github.io/my-hugo-blog/ts-design-pattern/" /><meta property="og:image" content="https://nofear195.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-06T00:00:00+00:00" /><meta property="og:site_name" content="nofear195&#39;s blog" />
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nofear195.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Design Patterns in TypeScript"/>
+<meta name="twitter:description" content="For more practice code, please click the github repository &ndash;&gt; https://github.com/nofear195/ts-design-pattern 😄 😄 😄"/>
+<meta name="application-name" content="DoIt">
+<meta name="apple-mobile-web-app-title" content="DoIt">
+
+<meta name="theme-color" content="#f8f8f8"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="canonical" href="https://nofear195.github.io/my-hugo-blog/ts-design-pattern/" /><link rel="prev" href="https://nofear195.github.io/my-hugo-blog/isbn-978-986-137-330-0/" /><link rel="next" href="https://nofear195.github.io/my-hugo-blog/the-gift-of-the-therapy/" /><link rel="stylesheet" href="/my-hugo-blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/my-hugo-blog/css/color.css"><link rel="stylesheet" href="/my-hugo-blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Design Patterns in TypeScript",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/nofear195.github.io\/my-hugo-blog\/ts-design-pattern\/"
+        },"genre": "posts","wordcount":  4271 ,
+        "url": "https:\/\/nofear195.github.io\/my-hugo-blog\/ts-design-pattern\/","datePublished": "2022-12-31T00:00:00+00:00","dateModified": "2023-01-06T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "nofear195"},"authors": [{
+                        "@type": "Person",
+                        "name": "nofear195"                    
+                    }],"description": ""
+    }
+    </script></head>
+
+<body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('auto' === 'light' || 'auto' === 'dark' || 'auto' === 'black') setTheme('auto'), saveTheme('auto'); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/my-hugo-blog/" title="nofear195&#39;s blog">nofear195&#39;s blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/my-hugo-blog/about/"> About Me </a><a class="menu-item" href="/my-hugo-blog/posts/"> Posts </a><a class="menu-item" href="/my-hugo-blog/categories/"> Categories </a><a class="menu-item" href="/my-hugo-blog/series/"> Series </a><a class="menu-item" href="/my-hugo-blog/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-select" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                    <select class="color-theme-select" id="theme-select-desktop" title="Switch Theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="black">Black</option>
+                        <option value="auto">Auto</option>
+                    </select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/my-hugo-blog/" title="nofear195&#39;s blog">nofear195&#39;s blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/my-hugo-blog/about/" title="">About Me</a><a class="menu-item" href="/my-hugo-blog/posts/" title="">Posts</a><a class="menu-item" href="/my-hugo-blog/categories/" title="">Categories</a><a class="menu-item" href="/my-hugo-blog/series/" title="">Series</a><a class="menu-item" href="/my-hugo-blog/tags/" title="">Tags</a><a href="#" class="menu-item theme-select" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+                <select class="color-theme-select" id="theme-select-mobile" title="Switch Theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="black">Black</option>
+                    <option value="auto">Auto</option>
+                </select>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><div class="toc" id="toc-auto">
+        <h2 class="toc-title">Contents</h2>
+        <div class="toc-content" id="toc-content-auto"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#reference">Reference</a></li>
+    <li><a href="#creational-patterns">Creational Patterns</a>
+      <ul>
+        <li><a href="#factory">Factory</a>
+          <ul>
+            <li><a href="#simple-factory">Simple Factory</a></li>
+            <li><a href="#factory-1">Factory</a></li>
+            <li><a href="#abstract-factory">Abstract Factory</a></li>
+          </ul>
+        </li>
+        <li><a href="#singleton">Singleton</a></li>
+        <li><a href="#builder">Builder</a></li>
+        <li><a href="#prototype">Prototype</a></li>
+      </ul>
+    </li>
+    <li><a href="#structural-patterns">Structural Patterns</a>
+      <ul>
+        <li><a href="#decorator">Decorator</a></li>
+        <li><a href="#adapter">Adapter</a></li>
+        <li><a href="#facade">Facade</a></li>
+        <li><a href="#composite">Composite</a></li>
+        <li><a href="#proxy">Proxy</a>
+          <ul>
+            <li><a href="#dynamic-proxy">Dynamic Proxy</a></li>
+            <li><a href="#protect-proxy">Protect Proxy</a></li>
+          </ul>
+        </li>
+        <li><a href="#bridge">Bridge</a></li>
+        <li><a href="#flyweight">Flyweight</a></li>
+      </ul>
+    </li>
+    <li><a href="#behavioral-patterns">Behavioral Patterns</a>
+      <ul>
+        <li><a href="#strategy">Strategy</a></li>
+        <li><a href="#observer">Observer</a></li>
+        <li><a href="#command">Command</a></li>
+        <li><a href="#template">Template</a></li>
+        <li><a href="#state">State</a></li>
+        <li><a href="#chain-of-responsibility">Chain Of Responsibility</a></li>
+        <li><a href="#interpreter">Interpreter</a></li>
+        <li><a href="#mediator">Mediator</a></li>
+        <li><a href="#memento">Memento</a></li>
+        <li><a href="#visitor">Visitor</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+    </div><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><script>document.getElementsByTagName("main")[0].setAttribute("autoTOC", "true")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Design Patterns in TypeScript</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='https://nofear195.github.io/my-hugo-blog/authors/nofear195'>nofear195</a></span>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">category <a href="/my-hugo-blog/categories/learning-note/"><i class="far fa-folder fa-fw"></i>learning-note</a></span>&nbsp;<span class="post-category">and</span>&nbsp;<span class="post-series">series <a href="/my-hugo-blog/series/"><i class="far fa-list-alt fa-fw"></i>Series</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-12-31">2022-12-31</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-01-06">2023-01-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;4271 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;<span id="/my-hugo-blog/ts-design-pattern/" class="leancloud_visitors" data-flag-title="Design Patterns in TypeScript">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count" id=twikoo_visitors></span>&nbsp;views
+                    </span>&nbsp;<span id="/my-hugo-blog/ts-design-pattern/" class="comment_count" data-flag-title="Design Patterns in TypeScript">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="twikoo-comment-count" id="twikoo-comment-count"></span>&nbsp;comments
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#reference">Reference</a></li>
+    <li><a href="#creational-patterns">Creational Patterns</a>
+      <ul>
+        <li><a href="#factory">Factory</a>
+          <ul>
+            <li><a href="#simple-factory">Simple Factory</a></li>
+            <li><a href="#factory-1">Factory</a></li>
+            <li><a href="#abstract-factory">Abstract Factory</a></li>
+          </ul>
+        </li>
+        <li><a href="#singleton">Singleton</a></li>
+        <li><a href="#builder">Builder</a></li>
+        <li><a href="#prototype">Prototype</a></li>
+      </ul>
+    </li>
+    <li><a href="#structural-patterns">Structural Patterns</a>
+      <ul>
+        <li><a href="#decorator">Decorator</a></li>
+        <li><a href="#adapter">Adapter</a></li>
+        <li><a href="#facade">Facade</a></li>
+        <li><a href="#composite">Composite</a></li>
+        <li><a href="#proxy">Proxy</a>
+          <ul>
+            <li><a href="#dynamic-proxy">Dynamic Proxy</a></li>
+            <li><a href="#protect-proxy">Protect Proxy</a></li>
+          </ul>
+        </li>
+        <li><a href="#bridge">Bridge</a></li>
+        <li><a href="#flyweight">Flyweight</a></li>
+      </ul>
+    </li>
+    <li><a href="#behavioral-patterns">Behavioral Patterns</a>
+      <ul>
+        <li><a href="#strategy">Strategy</a></li>
+        <li><a href="#observer">Observer</a></li>
+        <li><a href="#command">Command</a></li>
+        <li><a href="#template">Template</a></li>
+        <li><a href="#state">State</a></li>
+        <li><a href="#chain-of-responsibility">Chain Of Responsibility</a></li>
+        <li><a href="#interpreter">Interpreter</a></li>
+        <li><a href="#mediator">Mediator</a></li>
+        <li><a href="#memento">Memento</a></li>
+        <li><a href="#visitor">Visitor</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>For more practice code, please click the github repository &ndash;&gt; <a href="https://github.com/nofear195/ts-design-pattern" target="_blank" rel="noopener noreferrer">https://github.com/nofear195/ts-design-pattern</a> 😄 😄 😄</p>
+<h2 id="reference" class="headerLink">
+    <a href="#reference" class="header-mark"></a>Reference</h2><ol>
+<li><a href="https://www.drmaster.com.tw/Bookinfo.asp?BookID=MP22251" target="_blank" rel="noopener noreferrer">7天學會設計模式：設計模式也可以這樣學</a>
+<ul>
+<li>書中程式碼範例撰寫語言為 JAVA</li>
+<li>本篇文章參照書中程式碼，並依照練習需求改寫為用 TypeScript 撰寫</li>
+</ul>
+</li>
+<li><a href="https://titangene.github.io/article/jest-typescript.html" target="_blank" rel="noopener noreferrer">Jest + TypeScript：建置測試環境</a></li>
+</ol>
+<h2 id="creational-patterns" class="headerLink">
+    <a href="#creational-patterns" class="header-mark"></a>Creational Patterns</h2><h3 id="factory" class="headerLink">
+    <a href="#factory" class="header-mark"></a>Factory</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/factory" target="_blank" rel="noopener noreferrer">Factory pattern</a></li>
+</ul>
+<h4 id="simple-factory" class="headerLink">
+    <a href="#simple-factory" class="header-mark"></a>Simple Factory</h4><ul>
+<li>概念:建立一個 class(factory)，可隨著不同的輸入，取得相同抽象的類別實體</li>
+<li>方法:
+<ol>
+<li>建立一個共同行為的抽象 (interface or class)</li>
+<li>實作或繼承所需的類別</li>
+<li>建立一個類別(factory) ，其中可藉由不同的輸入，返回特定實作抽象的類別實體</li>
+</ol>
+</li>
+<li>簡單工廠,又稱靜態工廠</li>
+<li>優點:封裝類別實體的建立過程</li>
+<li>缺點:違反 OCP 開放/封閉原則，加入新的類別時，會改動 factory 的內容</li>
+</ul>
+<h4 id="factory-1" class="headerLink">
+    <a href="#factory-1" class="header-mark"></a>Factory</h4><ul>
+<li>概念: 抽象化 factory 的概念，只定義 factory 產出的方法，具體實作由子類別各自實現</li>
+<li>方法：
+<ol>
+<li>建立一個共同行為的抽象 interface or class</li>
+<li>實作或繼承所需的類別</li>
+<li>建立ㄧ個抽象(factory)，定義類別實體的方法</li>
+<li>實作所需類別的 factory</li>
+<li>實體的建立，只能由該 factory 類別產生</li>
+</ol>
+</li>
+</ul>
+<h4 id="abstract-factory" class="headerLink">
+    <a href="#abstract-factory" class="header-mark"></a>Abstract Factory</h4><ul>
+<li>概念: 將產生實體所需要的相關功能(屬性,方法) 再各自進行抽象，形成一系列的 factory</li>
+<li>方法：
+<ol>
+<li>建立額外功能的 factory</li>
+<li>建立基礎實體類別的 factory, 並在其中實體化額外功能的 factory</li>
+<li>實體的建立，一樣只能由該基礎 factory 類別產生</li>
+</ol>
+</li>
+</ul>
+<h3 id="singleton" class="headerLink">
+    <a href="#singleton" class="header-mark"></a>Singleton</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/factory" target="_blank" rel="noopener noreferrer">Singleton pattern</a></li>
+<li>概念: 為確保此類別只會產出一個物件，在建立該類別時，便實體化該物件，且需提供唯一存取的方法</li>
+<li>方法:
+<ol>
+<li>建立 private 的屬性，並將實體化的物件 assign 給該屬性</li>
+<li>建立 private 的 constructer，確保該物件不會再被實體化</li>
+<li>建立 public static 方法，取得唯一的類別實體</li>
+</ol>
+</li>
+<li>若建立該物件實體需要花費龐大資源，則實體可以延後至該類別第一次被呼叫時進行實體化</li>
+</ul>
+<h3 id="builder" class="headerLink">
+    <a href="#builder" class="header-mark"></a>Builder</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/builder" target="_blank" rel="noopener noreferrer">Builder pattern</a></li>
+<li>概念: 建立一個 director(指揮者)類別，用來封裝並指揮一個由多個不同類別組成的複雜實體，其類別實體化過程的先後順序</li>
+<li>方法:
+<ol>
+<li>拆解複雜實體的結構來源，找出其引入的類別實體</li>
+<li>找出複雜實體在實體化過程中，其內部引入類別的使用順序</li>
+<li>在 director 類別初始化中，放入一個尚未引入內別類別的複雜實體</li>
+<li>在 director 類別中建立組成函式，並依照分析後的順序，逐一將需要引入的類別實體，放入 director 內部的複雜實體中</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>如同指派一個師傅，由他去指揮一個團隊去組裝一個機器人，由一個機器人空殼，至能作用各式功能的機器人助手</li>
+<li>與 abstract factory pattern 的差異，在於 Builder pattern 強調其由無到有的 “順序”</li>
+</ol>
+</li>
+</ul>
+<h3 id="prototype" class="headerLink">
+    <a href="#prototype" class="header-mark"></a>Prototype</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/prototype" target="_blank" rel="noopener noreferrer">Prototype pattern</a></li>
+<li>概念: 直接複製原有的物件，而非直接重新建立一個新的物件</li>
+<li>方法:
+<ol>
+<li>使用 shallow copy (淺拷貝) 的方式，將新物件與舊物件指向共同的記憶體位置</li>
+<li>使用 deep copy (深拷貝) 的方式，將舊物件的內容複製到不同的記憶體位置，指向給新的物件使用</li>
+</ol>
+</li>
+</ul>
+<h2 id="structural-patterns" class="headerLink">
+    <a href="#structural-patterns" class="header-mark"></a>Structural Patterns</h2><h3 id="decorator" class="headerLink">
+    <a href="#decorator" class="header-mark"></a>Decorator</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/decorator" target="_blank" rel="noopener noreferrer">Decorator pattern</a></li>
+<li>概念: 像俄羅斯娃娃般，如同 &ldquo;同心圓&rdquo; 般一層覆蓋一層，由小至大，在原有的功能上再包裹一層作用(功能)</li>
+<li>方法:
+<ol>
+<li>建立一致功能的抽象方法</li>
+<li>依照需求在不同的實作階層上，實作該共同功能</li>
+<li>使用該類別的實體時，可動態依照實作類別，動態附加功能於實體上</li>
+</ol>
+</li>
+</ul>
+<h3 id="adapter" class="headerLink">
+    <a href="#adapter" class="header-mark"></a>Adapter</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/adapter" target="_blank" rel="noopener noreferrer">Adapter pattern</a></li>
+<li>概念: 一個轉接器的功能，讓原本無法作用功能的實體，載入另一個可執行功能的實體，使原本的實體可藉由載入的實體，去完成原本無法作用的功能</li>
+<li>方法:
+<ol>
+<li>在 adapter 初始化中，放入之後需要轉接功能的實體</li>
+<li>定義 function 函式, 用來呼叫需要轉接實體的功能</li>
+</ol>
+</li>
+</ul>
+<h3 id="facade" class="headerLink">
+    <a href="#facade" class="header-mark"></a>Facade</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/facade" target="_blank" rel="noopener noreferrer">Facade pattern</a></li>
+<li>概念: 使用一個類別，用來封裝直接與各個子系統的功能，並可以製作一連串子系統之間的互動的功能</li>
+<li>方法:
+<ol>
+<li>在 facade 類別的初始化中，放入所有會互相作用的類別實體</li>
+<li>定義 function 函式, 用來定義內部類別實體的相互作用方式</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>封裝一個大系統中，各個子系統間的互動方式，外部行為者只需要跟 facade 的介面進行互動即可</li>
+<li>如同遙控器一樣，整合各式的工具，供使用者可以方便去使用</li>
+<li>web service 中的 MVC 架構即是採用此 pattern 的做法</li>
+<li>為最常見且被應用的 pattern 之一</li>
+</ol>
+</li>
+</ul>
+<h3 id="composite" class="headerLink">
+    <a href="#composite" class="header-mark"></a>Composite</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/composite" target="_blank" rel="noopener noreferrer">Composite pattern</a></li>
+<li>概念: 用於處理樹狀結構的資料，即當資料有階層式的關係，而每個階層都可抽象出共同行為時</li>
+<li>方法:
+<ol>
+<li>定義一個抽象,搜集階層中 node 共同擁有的行為或方法，讓所有實體的 node 都可以去繼承並實作</li>
+<li>在 node 介面上加入 add, remove 等新增或刪除的方式，用於改變當前樹狀結構的方式</li>
+<li>分別以各個階層所需要的實作方式進行實作，eg: root, child, leaf 等</li>
+</ol>
+</li>
+</ul>
+<h3 id="proxy" class="headerLink">
+    <a href="#proxy" class="header-mark"></a>Proxy</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/proxy" target="_blank" rel="noopener noreferrer">Proxy pattern</a></li>
+</ul>
+<h4 id="dynamic-proxy" class="headerLink">
+    <a href="#dynamic-proxy" class="header-mark"></a>Dynamic Proxy</h4><ul>
+<li>概念: 為被代理的物件提供一個緩衝，讓被代理的物件完成初始化或某些動作前，執行其他的動作(代理)</li>
+<li>方法:
+<ol>
+<li>將需要被代理的物件方法作為一個動態代理的抽象</li>
+<li>實作抽象的行為，並在初始化中放入被代理的物件</li>
+<li>讓 client 只能藉由動態代理的方式，呼叫被代理物件的方法</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>包覆需要代理的物件，使其可以有餘裕完成本身需要被執行方法或執行初始化</li>
+<li>與 decorator pattern 方法不同在於 decorator 可以包裹很多層，而 proxy 一般只會包裹一層</li>
+<li>可以將 decorator pattern 作為 proxy pattern 的延伸或特化版</li>
+</ol>
+</li>
+</ul>
+<h4 id="protect-proxy" class="headerLink">
+    <a href="#protect-proxy" class="header-mark"></a>Protect Proxy</h4><ul>
+<li>概念: 為被代理的物件提供一種保護，限制外在行為對其的存取行為</li>
+<li>方法:
+<ol>
+<li>分析需要被代理的對象物件不同行為，形成一個抽象</li>
+<li>實作抽象的行為，並在初始化中放入被代理的物件</li>
+<li>將需要限制存取行為的方法，回傳為一個空值或訊息，藉以限制被代理的物件其屬性被更改</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>當引用第三方撰寫的程式時，可藉由限制代理作為一個前置的保護方式，用來避免引用的程式被誤用或亂用，而造成非預期的副作用</li>
+</ol>
+</li>
+</ul>
+<h3 id="bridge" class="headerLink">
+    <a href="#bridge" class="header-mark"></a>Bridge</h3><ul>
+<li>
+<p>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/bridge" target="_blank" rel="noopener noreferrer">Bridge pattern</a></p>
+</li>
+<li>
+<p>概念: 將類別的抽象與實作方式做切分，讓各自的行為變化不會被相互引響</p>
+</li>
+<li>
+<p>方法:</p>
+<ol>
+<li>在抽象類別中，加入其他的類別，由其他的類別實作抽象類別不想影響本身實作類別的函式或方法</li>
+<li>在抽象類別的實作中，用 super 的方式建構抽象類別加入的類別實體，並為其做使用</li>
+</ol>
+</li>
+<li>
+<p>特色:</p>
+<ol>
+<li>在抽象類別之間，建立一個聯絡的橋樑做互動，其各自的的實體可藉由建立的橋樑進行互動，同時可保持各自的獨立性</li>
+</ol>
+</li>
+</ul>
+<h3 id="flyweight" class="headerLink">
+    <a href="#flyweight" class="header-mark"></a>Flyweight</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/flyweight" target="_blank" rel="noopener noreferrer">Flyweight pattern</a></li>
+<li>概念: 為降低系統負荷，讓物件的某些屬性可以隨著需求隨時做變化
+<ol>
+<li>在類別中區分外在屬性與內部屬性</li>
+<li>內部屬性由所有類別所共用</li>
+<li>外部屬性則可以依照需求而置換屬性內容</li>
+<li>建立一個產生類別實體的工廠，用來生產相同類別但不同內部屬性內容的實體，並管理取得各種實體產生的方式</li>
+</ol>
+</li>
+</ul>
+<h2 id="behavioral-patterns" class="headerLink">
+    <a href="#behavioral-patterns" class="header-mark"></a>Behavioral Patterns</h2><h3 id="strategy" class="headerLink">
+    <a href="#strategy" class="header-mark"></a>Strategy</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/strategy" target="_blank" rel="noopener noreferrer">Strategy pattern</a></li>
+<li>概念: 將各種不同的策略(演算法)，包裝成類別，以便在需要時可快速切換不同的策略</li>
+<li>方法:
+<ol>
+<li>建立呼叫策略方法的介面</li>
+<li>實作不同的策略類別</li>
+<li>在需要使用多個策略的類別中，加入呼叫策略的方法</li>
+<li>切換不同策略時，直接帶入所需策略的實體，即可使用該策略</li>
+</ol>
+</li>
+<li>與工廠模式的差異
+factory pattern : 專注於如何去建立物件，而非使用
+strategy pattern : 專注於依照當前所需，由外部帶入不同的策略做使用</li>
+</ul>
+<h3 id="observer" class="headerLink">
+    <a href="#observer" class="header-mark"></a>Observer</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/observer" target="_blank" rel="noopener noreferrer">Observer pattern</a></li>
+<li>概念: 在觀察者(observer) 介面中，提供方法供被觀察者(subject)一次呼叫多個實作其介面的類別，用於處理物件之間一對多的連動關係</li>
+<li>方法:
+<ol>
+<li>建立 obserser 介面，提供被呼叫 or 觸發時對應的方法</li>
+<li>依照不同的需求，實作被觸發時，對應的做法</li>
+<li>在一個被觀察的物件 (subject) 中, 建立一個可以觸發 observer 的方法，達到一對多的連動與互動的效果</li>
+</ol>
+</li>
+</ul>
+<h3 id="command" class="headerLink">
+    <a href="#command" class="header-mark"></a>Command</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/command" target="_blank" rel="noopener noreferrer">Command pattern</a></li>
+<li>概念: 將 command(request) 封裝成不同的物件形式,用於分源分流處理不同的 command(request)</li>
+<li>方法:
+<ol>
+<li>建立 receiver 介面方法，並依照需做分別去實作</li>
+<li>建立 command 介面，實作可接收 receviver 實體，與呼叫該 receiver 方法的類別</li>
+<li>建立 invoker 類別，呼叫不同的 command</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>建立一個中介的角色 invoker, 用來轉接所有的 command 給對應的 receiver</li>
+<li>invoker 可將不同的 command 進行處理的優先順序排列</li>
+<li>invoker 可自行控管不同 receiver 可接收的 coomand 數量, 也可取消未處理的 command</li>
+<li>invoker 可將不同的 command 進行處理的優先順序排列</li>
+</ol>
+</li>
+</ul>
+<h3 id="template" class="headerLink">
+    <a href="#template" class="header-mark"></a>Template</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/template" target="_blank" rel="noopener noreferrer">Template pattern</a></li>
+<li>概念: 定義一套方法或流程(演算法)的結構，但實作的細節則由實作的子類別去實現，並藉由 hook 去切換不同的實作方法</li>
+<li>方法:
+<ol>
+<li>定義一個實體作為 template 的 input, 供 template 類別改變其內容</li>
+<li>定義 template 介面方法，表達演算法的結構</li>
+<li>實作介面演算法結構的 template 類別實體</li>
+<li>在 template 實體中，加入 hook，用來判定如何切換不同的 template 實體</li>
+<li>定義 function 函式，用來將 input 套用在當下的 template，並返回與 input 相同的類別，供給下一次套用 template 使用</li>
+</ol>
+</li>
+</ul>
+<h3 id="state" class="headerLink">
+    <a href="#state" class="header-mark"></a>State</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/state" target="_blank" rel="noopener noreferrer">State pattern</a></li>
+<li>概念: 讓物件的不同狀態封裝成各式的類別，用來表達物件會隨著不同狀態而有著不同的行為</li>
+<li>方法:
+<ol>
+<li>在一個需要表達不同狀態的物件中，定義一個可切換當前屬性狀態的函式</li>
+<li>定義不同 state 物件，接收當前須改變的狀態物件，改變其屬性狀態</li>
+<li>在不同 state 物件中，插入可以再變更成另一種 state 物件的條件方式，用於再使 input 物件，切換成不同的狀態物件</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>React framework 中藉著 state 監聽資料的狀態變化，渲染不同的 UI 畫面</li>
+<li>Redux, Vuex, Pinia 等前端狀態管理工具，都可有效率管控不同的資料狀態被改變的方式與來源，以確保每一個狀態的改變都可以被追蹤</li>
+</ol>
+</li>
+</ul>
+<h3 id="chain-of-responsibility" class="headerLink">
+    <a href="#chain-of-responsibility" class="header-mark"></a>Chain Of Responsibility</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/chainOfResponsibility" target="_blank" rel="noopener noreferrer">Chain Of Responsibility pattern</a></li>
+<li>概念: 定義一個介面函式，讓不同的物件處理 (實作) 同一個請求 (request)，並讓實作介面者(handler) 在達成特定條件下傳遞給另一個 handler 處理相同的請求</li>
+<li>方法:
+<ol>
+<li>將請求 (request) 這個動作封裝成一個類別，並設置可傳遞給不同 handler 呼叫的條件屬性與對應的存取函示，即定義一個責任鏈(chain of resposibility)</li>
+<li>將可處理 request 的 handler 抽象成一個介面(抽象類別)，並在初始化中，放入在達成請求時，下個處理相同請求的 handler</li>
+<li>實作 handler 的抽象類別，定義應對請求方式的條件，並處理請求</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>相較 if else 的方式，包裝在達成條件下，呼叫相關的實體處理相同的請求，使用此 pattern 可以在不更動 hanlder 前提下，藉由更動 request 的屬性，設置可以傳達到某一個責任鏈階段的 handler</li>
+</ol>
+</li>
+</ul>
+<h3 id="interpreter" class="headerLink">
+    <a href="#interpreter" class="header-mark"></a>Interpreter</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/interpreter" target="_blank" rel="noopener noreferrer">Interpreter pattern</a></li>
+<li>概念: 一系列的翻譯工具、解譯器，用來表達或轉換輸入的語言文字意思</li>
+<li>方法:
+<ol>
+<li>定義轉換輸入的界面函示，然後實作各式的翻譯方法</li>
+<li>走訪輸入的文字並設置不同的條件，用以切換不同的翻譯方法</li>
+</ol>
+</li>
+</ul>
+<h3 id="mediator" class="headerLink">
+    <a href="#mediator" class="header-mark"></a>Mediator</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/mediator" target="_blank" rel="noopener noreferrer">Mediator pattern</a></li>
+<li>概念: 一個中介(mediator)物件，用來傳遞、管理多個物件的交互作用</li>
+<li>方法:
+<ol>
+<li>定義 mediator 的屬性，用來區分接收物件的角色 (eg: 用不同的 list 存放不同的物件)</li>
+<li>定義 mediator 的靜態方法 (static method)， 用來存放所有需要交互的物件</li>
+<li>定義 mediator 擁有交互物件所持有的交互方法，在交互物件需要進行交互時，由 mediator 進行實際上的交互作用</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>當多個物件具有交互作用時，可使用中介當任中間的傳遞角色，降低交互物件之間的耦合性</li>
+<li>如同聊天軟體的角色，說話的雙方並非直接交談，而是透過軟體，將雙方要傳遞的話語，進行搜集並傳遞給雙方</li>
+</ol>
+</li>
+</ul>
+<h3 id="memento" class="headerLink">
+    <a href="#memento" class="header-mark"></a>Memento</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/memento" target="_blank" rel="noopener noreferrer">Memento pattern</a></li>
+<li>概念: 備份、備忘錄，將物件的屬性，用另一個物件作儲存，使之可以隨時被調用，用以還原物件的狀態</li>
+<li>方法:
+<ol>
+<li>建立一個備忘錄的物件 (memento) 其屬性包含所有要備份物件 (originator) 的屬性</li>
+<li>在 originator 的函式中，建立存取 memento 的方法函示</li>
+<li>另外再建立一個 recorder 存放所有的 memento，並建立每個 memento 被 originator 存取的方式與順序</li>
+</ol>
+</li>
+</ul>
+<h3 id="visitor" class="headerLink">
+    <a href="#visitor" class="header-mark"></a>Visitor</h3><ul>
+<li>Practice code in TypeScrpt : <a href="https://github.com/nofear195/ts-design-pattern/tree/main/src/visitor" target="_blank" rel="noopener noreferrer">Visitor pattern</a></li>
+<li>概念: 在實作相同抽象的實體群集中(collation)，使用不同的 visitor 呼叫抽象中定義的函式，讓群集中所有的實體去個別執行其實作的方法
+<ol>
+<li>在抽象類別中 (abstract class)，定義抽象函示 (abstract function)，由繼承的類別依照各自的需求實作</li>
+<li>建立一個 collation 類別存放所有實作繼承抽象類別的實體</li>
+<li>建立 vistor 抽象的介面，其中定義相同名稱的函式，供 collation 內的實體在實作的抽象函式中進行呼叫</li>
+<li>在實作 vistor 介面的類別中，使用多載 (overload) 方式，定義 collation 中各個實體的執行方式</li>
+</ol>
+</li>
+<li>特色:
+<ol>
+<li>visitor 將物件的行為做封裝，讓個別物件在 collation 中能保留各自的特性</li>
+</ol>
+</li>
+</ul></div>
+
+        
+
+<div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-01-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span><a class="link-to-mardown" href=/my-hugo-blog/ts-design-pattern/index.md target="_blank" rel="noopener noreferrer">Read markdown</a>
+                    </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/my-hugo-blog/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/my-hugo-blog/isbn-978-986-137-330-0/" class="prev" rel="prev" title="[ 心得｜摘要｜節錄 ] 思考の整理學 :最多東大生、京大生讀過的一本書!"><i class="fas fa-angle-left fa-fw"></i>[ 心得｜摘要｜節錄 ] 思考の整理學 :最多東大生、京大生讀過的一本書!</a>
+            <a href="/my-hugo-blog/the-gift-of-the-therapy/" class="next" rel="next" title="[ 心得｜摘要｜節錄 ]  生命的禮物 給心理治療師的 85 則備忘錄">[ 心得｜摘要｜節錄 ]  生命的禮物 給心理治療師的 85 則備忘錄<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="twikoo"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://twikoo.js.org/">Twikoo</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">
+                    Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer" title="Hugo 0.110.0">Hugo</a>&nbsp;|&nbsp;Theme - <a href="https://github.com/HEIGE-PCloud/DoIt" target="_blank" rel="noopener noreferrer" title="DoIt 0.2.13"><i class="far fa-edit fa-fw"></i> DoIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/my-hugo-blog/" target="_blank" rel="noopener noreferrer">nofear195</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div id="cookieconsent-container"></div><div class="assets"><link rel="stylesheet" href="/my-hugo-blog/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/my-hugo-blog/lib/katex/katex.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/my-hugo-blog/lib/katex/copy-tex.min.css">
+        <noscript><link rel="stylesheet" href="/my-hugo-blog/lib/katex/copy-tex.min.css"></noscript><link rel="stylesheet" href="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"twikoo":{"commentCount":true,"el":"#twikoo","envId":"https://twikoo-api-fawn.vercel.app/","lang":"en"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"distance":100,"findAllMatches":false,"fuseIndexURL":"/my-hugo-blog/index.json","highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"type":"fuse","useExtendedSearch":false},"sharerjs":true,"table":{"sort":true}};</script><script type="text/javascript" src="/my-hugo-blog/lib/twikoo/twikoo.all.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/twikoo.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/tablesort/tablesort.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/auto-render.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/copy-tex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/katex/mhchem.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/katex.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/lib/cookieconsent/cookieconsent.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/cookieconsent.min.js" defer></script><script type="text/javascript" src="/my-hugo-blog/js/theme.min.js" defer></script></div>
+</body>
+
+</html>
