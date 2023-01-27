@@ -4,10 +4,7 @@ date: 2022-11-21
 draft: false
 authors: ["nofear195"]
 description: ""
-
 categories: ["book-reading"]
-series: ["life"]
-
 lightgallery: true
 
 ---

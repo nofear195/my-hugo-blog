@@ -6,11 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 featuredImage: "hugo_logo.webp"
-
-tags: ["hugo"]
 categories: ["environment-build"]
-series: ["blog-setting"]
-
 lightgallery: true
 
 ---

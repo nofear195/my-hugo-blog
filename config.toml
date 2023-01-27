@@ -156,7 +156,7 @@ theme = "DoIt"
       # URL of avatar shown in home page
       # Place your avatar file under static or assets directory
       # The filepath is relative to the static or assets directory
-      avatarURL = "android-chrome-256x256.png"
+      avatarURL = "images/android-chrome-256x256.png"
       #  title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
@@ -716,8 +716,6 @@ tag = "tags"
 series = "series"
 
 
-
-
 [menu]
   [[menu.main]]
     identifier = "about"
@@ -746,21 +744,3 @@ series = "series"
     url = "/categories/"
     title = ""
     weight = 3
-  [[menu.main]]
-    identifier = "series"
-    pre = ""
-    post = ""
-    name = "Series"
-    url = "/series/"
-    title = ""
-    weight = 4
-  [[menu.main]]
-    identifier = "tags"
-    pre = ""
-    post = ""
-    name = "Tags"
-    url = "/tags/"
-    title = ""
-    weight = 5
-
-

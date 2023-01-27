@@ -5,10 +5,7 @@ lastmod: 2023-01-11
 draft: false
 authors: ["nofear195"]
 description: ""
-
 categories: ["book-reading"]
-series: ["life"]
-
 lightgallery: true
 
 ---

@@ -5,10 +5,7 @@ lastmod: 2023-01-06
 draft: false
 authors: ["nofear195"]
 description: ""
-
 categories: ["learning-note"]
-series: [""]
-
 lightgallery: true
 
 ---
