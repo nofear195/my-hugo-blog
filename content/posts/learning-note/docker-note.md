@@ -46,6 +46,8 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
     prune # 修剪，刪除沒用到的可操作物件(management command)
     
     $ docker system df # 列出 docker 使用狀態
+
+    ${PWD} # 執行命令時當下的目錄位置
     ```
 
 ### Container (容器)
@@ -63,11 +65,13 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
   --name # 為容器命名
   --platform # 強制使用與本地作業系統不一樣的 image
   --interactive # 保持輸入的模式，即保持可以跟容器互動的狀態
-  -tty -t # 分配一個 terminal 視窗
-  --publish -p # 將本機端的 port 連接至 容器初始對外開放的 port
+  -tty , -t # 分配一個 terminal 視窗
+  --publish, -p # 將本機端的 port 連接至 容器初始對外開放的 port
   --network # 設置容器連接的虛擬網路名稱，若不設置 default 為 bridge
   --rm # 當離開容器時(exit)，自動刪除容器
-  --env -e # 設置環境變數
+  --env, -e # 設置環境變數
+  --volume, -v # 綁定至指定的 volume
+  --workdir, -w # 指定進去容器時，命令執行的路徑位置
   
   IMAGE [COMMAND] ## [COMMAND] 若無輸入則使用預設命令，若有則用來取代預設
   
@@ -77,6 +81,10 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
   
   ### 啟動 nignix 並用本機端的 8080 port 連接至 nginx 對外開放的 80 port
   $ docker container run -d --name nginx -p 8080:80 nginx
+
+  ### 將當下的目錄綁定至容器內的目錄，並指定 /source 命令執行的路徑位置
+  $ docker container run -v ${PWD}:/source -w /source node:14-alpine
+
   ```
 
 - 暫停容器：container stop
