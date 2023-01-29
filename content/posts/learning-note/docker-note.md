@@ -430,6 +430,10 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
   $ docker compose up [OPTIONS] [SERVICE...]
 
   [SERVICE...]: 若沒有帶這個參數，則執行 compose 內所有的容器(服務)
+
+  OPTIONS
+  ##########
+  --detach, -d,  # 使 compose 被景執行建制過程
   ```
 
 - 停止和移除容器和虛擬網路 compose down
@@ -443,6 +447,15 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
   --volumes, -v, volumes # 移除定義在 compose file 連結的 volume
   ```
 
+- 建立或重新建立服務 compose build
+
+  ```bash
+  # Build or rebuild services
+  $ docker compose build [OPTIONS] [SERVICE...]
+
+  [SERVICE...]: 若沒有帶這個參數，則執行 compose 內所有的容器(服務)
+  ```
+
 - 範例
 
   ```yml
@@ -453,3 +466,21 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
     ports:
       - "8000:5000"
   ```
+
+## uncategorized
+
+### image types
+
+- image without "alpine" name :
+  - 包含完整套件環境的 image
+  - 進入 image 產生出的 docker shell 方法 ： 'bash'
+
+- image with "alpine" name :
+  - 最小化 image 大小，只包含所需的服務的 image
+  - 進入 image 產生出的 docker shell 方法 ： 'sh'
+
+- [Difference between sh and bash](https://www.geeksforgeeks.org/difference-between-sh-and-bash/#:~:text=bash%20is%20sh%2C%20but%20with,%2FUnix%2Dlike%20operating%20systems.)
+
+  - bash 是 sh 的巨集
+  - sh 主要用來在 UNIX 或 UNIX-like 作業系統中使用
+  - bash 主要用來使用在 Linux-based 作業系統中使用
