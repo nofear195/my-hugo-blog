@@ -396,6 +396,22 @@ My dockerhub link --> https://hub.docker.com/u/nofear195 :smile: :smile: :smile:
 
   ```
 
+### Build image
+
+```bash
+# Build an image from a Dockerfile
+
+$ docker build [OPTIONS] PATH | URL | -
+
+OPTIONS
+##########
+-t, --tag  # 為建立的 image 加上 tag 名稱 , ex: nofear195/annotator
+
+### PATH : 一般會在 Dockerfile 的位置下 docker command 指令
+ex : $docker build -t nofear195/annotator .
+
+```
+
 ## .dockerignore
 
 - 目的：將 image build 沒有用到檔案做忽略
