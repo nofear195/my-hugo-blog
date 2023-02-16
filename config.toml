@@ -12,7 +12,7 @@ theme = "DoIt"
   enable = true
 [params]
   #  DoIt theme version
-  version = "0.2.X"
+  version = "0.3.X"
   # website title
   title = "nofear195's blog"
   # site description

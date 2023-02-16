@@ -2,6 +2,7 @@
 title: "Hugo setting"
 subtitle: ""
 date: 2022-10-16
+lastmod: 2023-02-15
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -193,6 +194,19 @@ git config --local -l | grep submodule | sed -e 's/^\(submodule\.[^.]*\)\(.*\)/\
 # manually remove leftovers
 rm .gitmodules
 rm -rf .git/modules
+```
+
+- 解法二
+  - [git submodule add时提示“projectfolder already exists in the index” #208](https://github.com/yaoningvital/blog/issues/208)
+
+``` bash
+
+git rm --cached themes/DoIt
+
+git ls-files --stage themes/DoIt
+
+git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt
+
 ```
 
 ### 後記
