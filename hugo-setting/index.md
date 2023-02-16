@@ -185,6 +185,19 @@ rm .gitmodules
 rm -rf .git/modules
 ```
 
+- 解法二
+  - [git submodule add时提示“projectfolder already exists in the index” #208](https://github.com/yaoningvital/blog/issues/208)
+
+``` bash
+
+git rm --cached themes/DoIt
+
+git ls-files --stage themes/DoIt
+
+git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt
+
+```
+
 ### 後記
 
 - 總算把 github page 建起來，並套上 hugo 框架，真的好不容易啊，只能說好多坑，所以先把還記得都列上去了，之後有想到再新增吧 XD
