@@ -11,7 +11,7 @@ lightgallery: true
 
 ## About Me
 
-Hi~ 我是 nofear195，目前是個前端工程師。
+Hi~ 我是 nofear195，目前是個工程師。
 
 建立這個 Blog 的目的主要是在紀錄我有意識的成長歷程
 
@@ -26,4 +26,3 @@ Hi~ 我是 nofear195，目前是個前端工程師。
 - Master degree from the Department of Computer Science and
 Information Engineering, National Central University
 - Bachelor degree from the Department of Finance, Feng Chia University
-

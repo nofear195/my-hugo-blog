@@ -6,6 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["learning-note"]
+tags: ["Design Pattern","TypeScript","物件導向"]
 lightgallery: true
 
 ---

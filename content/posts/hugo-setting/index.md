@@ -8,6 +8,7 @@ authors: ["nofear195"]
 description: ""
 featuredImage: "hugo_logo.webp"
 categories: ["environment-build"]
+tags: ["hugo"]
 lightgallery: true
 
 ---

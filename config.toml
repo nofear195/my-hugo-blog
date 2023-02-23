@@ -744,3 +744,11 @@ series = "series"
     url = "/categories/"
     title = ""
     weight = 3
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "Tags"
+    url = "/tags/"
+    title = ""
+    weight = 4
