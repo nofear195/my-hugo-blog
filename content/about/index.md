@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 subtitle: ""
-date: 2022-10-16
+date: 2023-03-11
 draft: false
 authors: ["nofear195"]
 
@@ -11,18 +11,20 @@ lightgallery: true
 
 ## About Me
 
-Hi~ 我是 nofear195，目前是個工程師。
+Hi~ I'm nofear195，目前是一位多面向的軟體工程師。
 
-建立這個 Blog 的目的主要是在紀錄我有意識的成長歷程
-
-不過還是怕健忘的我，可以快速複習我之前學啥ＱＡＱ，就當作是我個人的小抄天地ＸＤ
+相信成長，改變階級複製的桎梏。
 
 ## Article
 
 - [Industrial Control System Anomaly Detection and Classification Based on Network Traffic](https://ieeexplore.ieee.org/document/9758754)
 
-## Education
+### Works
 
-- Master degree from the Department of Computer Science and
-Information Engineering, National Central University
-- Bachelor degree from the Department of Finance, Feng Chia University
+- vue-image-annotator
+  - [GitHub Repository](https://github.com/nofear195/vue-image-annotator)
+  - [Live Demo](https://nofear195.github.io/vue-image-annotator/)
+
+- vue-image-picker
+  - [GitHub Repository](https://github.com/nofear195/nuxt-image-picker)
+  - [Live Demo](https://nofear195.github.io/nuxt-image-picker/)
