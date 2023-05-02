@@ -6,7 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["learning-note"]
-tags: ["Innovation","Dialogue"]
+tags: ["創新","訊息傳達"]
 lightgallery: true
 
 ---
@@ -32,6 +32,7 @@ lightgallery: true
 ## 說出重點，正確傳達訊息
 
 ### 當任務正常運行時
+
 1. 摘要任務目前的執行進度、預計完成的時間
 2. 接下來要執行的任務項目
 3. 主動尋求對方建議
