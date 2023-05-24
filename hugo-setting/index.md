@@ -43,6 +43,7 @@ hugo new posts/my-first-post.md
 
 # 啟動本地端 server
 hugo server -D
+hugo server --disableFastRender
 
 # 建置 public 靜態網頁
 hugo -D
