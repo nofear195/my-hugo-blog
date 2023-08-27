@@ -6,7 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["learning-note"]
-tags: ["Design Pattern","TypeScript","物件導向"]
+tags: ["Design Pattern","軟體研發"]
 lightgallery: true
 
 ---

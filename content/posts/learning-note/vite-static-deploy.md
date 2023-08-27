@@ -6,7 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["learning-note"]
-tags: ["Vite","Vue3","Nuxt3","Deploy","Static Site","GitHub Pages"]
+tags: ["Vue","Deploy","軟體研發"]
 lightgallery: true
 
 ---

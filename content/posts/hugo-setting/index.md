@@ -8,7 +8,7 @@ authors: ["nofear195"]
 description: ""
 featuredImage: "hugo_logo.webp"
 categories: ["environment-build"]
-tags: ["hugo"]
+tags: ["hugo","軟體研發"]
 lightgallery: true
 
 ---

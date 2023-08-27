@@ -1,11 +1,11 @@
 ---
-title: "[ 心得｜摘要｜節錄 ]  世界第一的R90高效睡眠法：C羅、貝克漢的睡眠教練教你如何睡得少，也能表現得好"
+title: "[閱讀] 世界第一的R90高效睡眠法：C羅、貝克漢的睡眠教練教你如何睡得少，也能表現得好"
 date: 2022-11-21
 draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["book-reading"]
-tags: ["睡眠","健康法"]
+tags: ["讀書 心得｜摘要｜節錄","健康法"]
 lightgallery: true
 
 ---

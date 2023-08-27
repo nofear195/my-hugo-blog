@@ -1,12 +1,12 @@
 ---
-title: "[ 心得｜摘要｜節錄 ]  生命的禮物 給心理治療師的 85 則備忘錄"
+title: "[閱讀] 生命的禮物 給心理治療師的 85 則備忘錄"
 date: 2023-01-11
 lastmod: 2023-01-11
 draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["book-reading"]
-tags: ["心理治療"]
+tags: ["讀書 心得｜摘要｜節錄","心理學"]
 lightgallery: true
 
 ---

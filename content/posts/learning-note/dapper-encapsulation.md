@@ -6,7 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["learning-note"]
-tags: ["Dapper","ORM","Encapsulation","Database","dotnet 7"]
+tags: ["Dapper","軟體研發"]
 lightgallery: true
 
 ---
