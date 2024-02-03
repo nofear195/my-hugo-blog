@@ -1,8 +1,8 @@
 ---
-title: "Hugo setting"
+title: "Deploying a Hugo Blog on GitHub"
 subtitle: ""
 date: 2022-10-16
-lastmod: 2023-05-02
+lastmod: 2024-02-03
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -17,140 +17,112 @@ Hugo 踩坑紀錄
 <!--more-->
 
 {{< admonition type=info title="提示"  >}}
-以下建立方式皆以 [Visual Studio Code Dev Containers](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-a-git-repository-or-github-pr-in-an-isolated-container-volume) extensioin
-在獨立的 docker container 環境下建置完成
+本篇環境使用 [Visual Studio Code Dev Containers](https://code.visualstudio.com/docs/remote/containers#_quick-start-open-a-git-repository-or-github-pr-in-an-isolated-container-volume) extensioin
+在 docker container 內完成 Blog 製作
 {{< /admonition >}}
 
-## Setup (normal)
+## Environment Settings
 
-### github side 1
+- reference : [https://github.com/devcontainers/features/tree/main/src/hugo](https://github.com/devcontainers/features/tree/main/src/hugo>)
+- path : .devcontainer/devcontainer.json
 
-1. 從 github 新增 repository
-2. 複製 repository HTTPS 連結
-
-### vscode side
-
-1. vscode 上方工具列 View => Command Platte
-2. 搜尋 **Dev Containers: Clone Repository in Container Volume…**
-3. 貼上在 github 取得的 HTTPS 連結
-4. 環境選擇： 手動輸入 Hugo (Community)
-5. vscode 上方工具列 Terminal => New Termianl
-6. 開始用 terminal 建置 hugo 環境
-
-```bash
-# 查看 hugo 使否已建置好
-hugo version
-
-# 新增 hugo site 於根目錄 .
-hugo new site . --force
-
-# 新增主題
-git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-
-# 設置 site 主題參數至 config.toml 檔案
-echo theme = \"ananke\" >> config.toml
-
-# 新增文章 (draft:false)
-hugo new posts/my-first-post.md
-
-# 啟動本地端 server
-hugo server -D
-hugo server --disableFastRender
-
-# 建置 public 靜態網頁
-hugo -D
+```json
+ {
+  "name": "Go",
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.21-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/hugo:1": {
+    "extended": true, // 用於支援將 SASS/SCSS 轉成原生 CSS
+    "version": "latest"
+    }
+  }
+ }
 ```
 
-7. 在 config.toml 的 baseURL 設置為之後 github.io 網址 eg: **baseURL = "https://nofear195.github.io/my-hugo-blog/"**
+## Deploy workflow
+
+1. create a new repository from Github
+2. vscode 上方工具列 View => Command Platte
+3. 搜尋 **Dev Containers: Clone Repository in Container Volume…**
+4. search the repository name that created from step1
+5. 設置 Dev Container Configuration file
+    - Image ：Go devcontainers
+    - Features : Hugo devcontainers
+    - options : extend
+6. 開始用 terminal 建置 hugo 環境
+
+    ```bash
+    # 查看 hugo 使否已建置好
+    hugo version
+
+    # 新增 hugo site 於根目錄 .
+    hugo new site . --force
+
+    # 新增主題
+    git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+
+    # 設置 site 主題參數至 config.toml 檔案
+    echo theme = \"ananke\" >> config.toml
+
+    # 新增文章 (draft:false)
+    hugo new posts/my-first-post.md
+
+    # 啟動本地端 server
+    hugo server -D
+    hugo server --disableFastRender
+
+    # 建置 public 靜態網頁
+    hugo -D
+    ```
+
+7. 在 config.toml 的 baseURL 設置為之後 github.io 網址 eg: **baseURL = "<https://nofear195.github.io/my-hugo-blog/>"**
 8. 新增 .github/workflows/gh-pages.yml 檔案(需要先手動新增 .github , workflows 資料夾)
 9. 在 gh-pages.ymal 內新增以下內容
 
-``` inside file
-name: github pages
+    ``` yml
+    name: github pages
 
-on:
-  push:
-    branches:
-      - main  # Set a branch to deploy
-  pull_request:
+    on:
+      push:
+        branches:
+          - main  # Set a branch to deploy
+      pull_request:
 
-jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+    jobs:
+      deploy:
+        runs-on: ubuntu-22.04
+        steps:
+          - uses: actions/checkout@v3
+            with:
+              submodules: true  # Fetch Hugo themes (true OR recursive)
+              fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-          extended: true
+          - name: Setup Hugo
+            uses: peaceiris/actions-hugo@v2
+            with:
+              hugo-version: 'latest'
+              extended: true
 
-      - name: Build
-        run: hugo --minify
+          - name: Build
+            run: hugo --minify
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-```
-
-10. 將以上完成的內容 push 至 github 上
-
-### github side 2
-
-1. 在該 repositoy 頁面的工具欄點選 settings => pages
-2. Source => Deploy form a branch
-3. Branch => gh-pages => /root
-
-## Setup (for DoIt theme)
-
-### 前置環境配置
-
-- 需更改 container 環境的 Hugo 版本 ： hugo -> hugo_extend (主要是能支援將 .scss 轉換成 .css)
-  - 需更改的文件有
-    1. devcontainer.json
-
-      ```json
-      "name": "Hugo (Community)",
-      "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-        // Update VARIANT to pick hugo variant.
-        // Example variants: hugo, hugo_extended
-        // Rebuild the container if it already exists to update.
-        "VARIANT": "hugo_extended",
-        // Update VERSION to pick a specific hugo version.
-        // Example versions: latest, 0.73.0, 0,71.1
-        // Rebuild the container if it already exists to update.
-        "VERSION": "latest",
-        // Update NODE_VERSION to pick the Node.js version: 12, 14
-        "NODE_VERSION": "14"
-        }
-      },
-
-      ```
-
-    2. Dockerfile
-
-    ```bash
-    # Update the NODE_VERSION arg in docker-compose.yml to pick a Node version: 18, 16, 14
-    ARG NODE_VERSION=16
-    FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${NODE_VERSION}
-    # VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.
-    ARG VARIANT=hugo_extended
-    # VERSION can be either 'latest' or a specific version number
-    ARG VERSION=latest
+          - name: Deploy
+            uses: peaceiris/actions-gh-pages@v3
+            if: github.ref == 'refs/heads/main'
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./public
     ```
 
-- 更改文件配置後重新 build container 即可套用 hugo_extend 環境
+10. 將以上完成的內容 push 至 github 上
+11. 在該 repositoy 頁面的工具欄點選 settings => pages
+12. Source => Deploy form a branch
+13. Branch => gh-pages => /root
+
+## Setup for DoIt theme
+
 - 需依照 DoIt Theme 文件教學去設置 config.toml 檔案才能正常運行
-- 運行指令 `hugo serve --disableFastRender` 啟動本地端 hugo server 並支援 **hotreload** 功能
+- 運行指令 `hugo serve --disableFastRender` 啟動本地端 hugo server
 
 ### 方法一
 
@@ -183,33 +155,38 @@ jobs:
 - stack overflow 討論串連結 [Deleting all Git cached submodules from repository](https://stackoverflow.com/questions/34890313/deleting-all-git-cached-submodules-from-repository)
 - 下面附上最佳解答，我實測有效的 code
 
-```bash
-# deinit all submodules from .gitmodules
-git submodule deinit .
+    ``` bash
+    # deinit all submodules from .gitmodules
+    git submodule deinit .
 
-# remove all submodules (`git rm`) from .gitmodules
-git submodule | cut -c43- | while read -r line; do (git rm "$line"); done
+    # remove all submodules (`git rm`) from .gitmodules
+    git submodule | cut -c43- | while read -r line; do (git rm "$line"); done
 
-# delete all submodule sections from .git/config (`git config --local --remove-section`) by fetching those from .git/config
-git config --local -l | grep submodule | sed -e 's/^\(submodule\.[^.]*\)\(.*\)/\1/g' | while read -r line; do (git config --local --remove-section "$line"); done
+    # delete all submodule sections from .git/config (`git config --local --remove-section`)
+    # by fetching those from .git/config
+    git config --local -l | grep submodule | sed -e 's/^\(submodule\.[^.]*\)\(.*\)/\1/g' \
+     | while read -r line; do (git config --local --remove-section "$line"); done
 
-# manually remove leftovers
-rm .gitmodules
-rm -rf .git/modules
-```
+    # manually remove leftovers
+    rm .gitmodules
+    rm -rf .git/modules
+
+    # create a new empty .gitmodules
+    touch .gitmodules
+    ```
 
 - 解法二
   - [git submodule add时提示“projectfolder already exists in the index” #208](https://github.com/yaoningvital/blog/issues/208)
 
-``` bash
+  ``` bash
 
-git rm --cached themes/DoIt
+  git rm --cached themes/DoIt
 
-git ls-files --stage themes/DoIt
+  git ls-files --stage themes/DoIt
 
-git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt
+  git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt
 
-```
+  ```
 
 ### 後記
 
