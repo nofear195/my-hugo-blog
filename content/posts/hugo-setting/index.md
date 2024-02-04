@@ -119,31 +119,30 @@ Hugo 踩坑紀錄
 12. Source => Deploy form a branch
 13. Branch => gh-pages => /root
 
-## Setup for DoIt theme
+## Setup for FixIt theme
 
-- 需依照 DoIt Theme 文件教學去設置 config.toml 檔案才能正常運行
+- 需依照 FixIt Theme 文件教學去設置 config.toml 檔案才能正常運行
 - 運行指令 `hugo serve --disableFastRender` 啟動本地端 hugo server
 
 ### 方法一
 
-- 從 DoIt Theme 文件教學做設置 ＝> [DoIt basic setting](https://hugodoit.pages.dev/theme-documentation-basics/)
+- 從 FixIt Theme 文件教學做設置 ＝> [FixIt basic setting](https://fixit.lruihao.cn/documentation/basics/)
 
 ### 方法二
 
   1. 跳過正常建置程序 `hugo new site . --force`
   2. 直接建立 themes 資料夾
-  3. 新增 submodule `git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt`
-  4. 複製 themes/DoIt 裡面的 exampleSite 至 根目錄 .
+  3. 新增 submodule `git submodule add https://github.com/hugo-fixit/FixIt.git themes/FixIt`
+  4. 複製 themes/FixIt 裡面的 exampleSite 至 根目錄 .
   5. 運行指令 `hugo serve --disableFastRender` 啟動本地端 hugo server
 
 {{< admonition type=info title="提示"  >}}
-  方法二的步驟不限於 DoIt 主題，任何主題內含有 exampleSite 字眼的文件都可用這方法直接跑範例，  <br>
+  方法二的步驟不限於 FixIt 主題，任何主題內含有 exampleSite 字眼的文件都可用這方法直接跑範例，  <br>
   自己再依需求從從範例修改
 {{</ admonition>}}
 
 ### 細節紀錄
 
-- 文章右側的目錄列表**正常顯示**需要在 config.toml 內 [params.page.toc] 其中一個參數設置 `keepStatic = false`
 - Twikoo comment 留言板設置教學 : [Twikoo 文档](https://twikoo.js.org/quick-start.html) 用 **Vercel 部署方式**
 
 ## Others
@@ -180,11 +179,11 @@ Hugo 踩坑紀錄
 
   ``` bash
 
-  git rm --cached themes/DoIt
+  git rm --cached themes/FixIt
 
-  git ls-files --stage themes/DoIt
+  git ls-files --stage themes/FixIt
 
-  git submodule add https://github.com/HEIGE-PCloud/DoIt.git themes/DoIt
+  git submodule add https://github.com/hugo-fixit/FixIt.git themes/FixIt
 
   ```
 

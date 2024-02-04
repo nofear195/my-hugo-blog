@@ -305,7 +305,7 @@ enableEmoji = true
   # NEW date format
   dateFormat = "2006-01-02"
   # website images for Open Graph and Twitter Cards
-  images = ["/logo.png"]
+  images = ["/android-chrome-256x256.png"]
   # FixIt 0.2.12 | NEW enable PWA
   enablePWA = true
   # FixIt 0.2.14 | NEW whether to add external Icon for external links automatically
