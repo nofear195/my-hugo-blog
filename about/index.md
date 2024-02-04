@@ -1,9 +1,9 @@
 # About Me
 
 
-## About Me
+### Hi there 👋
 
-Hi~ I'm nofear195，目前是一位多面向的軟體工程師。
+I'm nofear195, a software engineer with a background in full-stack web development.
 
 相信成長，改變階級複製的桎梏。
 
