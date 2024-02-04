@@ -3,7 +3,7 @@
 
 ### Hi there 👋
 
-I'm nofear195, a software engineer with a background in full-stack web development.
+I&#39;m nofear195, a software engineer with a background in full-stack web development.
 
 相信成長，改變階級複製的桎梏。
 
@@ -20,4 +20,10 @@ I'm nofear195, a software engineer with a background in full-stack web developme
 - vue-image-picker
   - [GitHub Repository](https://github.com/nofear195/nuxt-image-picker)
   - [Live Demo](https://nofear195.github.io/nuxt-image-picker/)
+
+
+---
+
+> Author: nofear195  
+> URL: https://nofear195.github.io/my-hugo-blog/about/  
 

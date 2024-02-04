@@ -1,0 +1,357 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>封裝 Dapper : 簡化對資料庫的操作 - nofear195's blog</title><meta name=author content="nofear195">
+<meta name=author-link content><meta name=description content="Mastering Dapper Encapsulation : Tips and Techniques for Simplified Database Access."><meta name=keywords content="Dapper,軟體研發"><meta itemprop=name content="封裝 Dapper : 簡化對資料庫的操作"><meta itemprop=description content="Mastering Dapper Encapsulation : Tips and Techniques for Simplified Database Access."><meta itemprop=datePublished content="2023-05-24T00:00:00+00:00"><meta itemprop=dateModified content="2023-05-25T00:00:00+00:00"><meta itemprop=wordCount content="1126"><meta itemprop=image content="https://nofear195.github.io/logo.png"><meta itemprop=keywords content="Dapper,軟體研發,"><meta property="og:title" content="封裝 Dapper : 簡化對資料庫的操作"><meta property="og:description" content="Mastering Dapper Encapsulation : Tips and Techniques for Simplified Database Access."><meta property="og:type" content="article"><meta property="og:url" content="https://nofear195.github.io/my-hugo-blog/posts/dapper-encapsulation/"><meta property="og:image" content="https://nofear195.github.io/logo.png"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-05-24T00:00:00+00:00"><meta property="article:modified_time" content="2023-05-25T00:00:00+00:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://nofear195.github.io/logo.png"><meta name=twitter:title content="封裝 Dapper : 簡化對資料庫的操作"><meta name=twitter:description content="Mastering Dapper Encapsulation : Tips and Techniques for Simplified Database Access."><meta name=application-name content="FixIt"><meta name=apple-mobile-web-app-title content="FixIt"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=favicon.ico><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://nofear195.github.io/my-hugo-blog/posts/dapper-encapsulation/><link rel=prev href=https://nofear195.github.io/my-hugo-blog/posts/innovation-and-dialogue/><link rel=next href=https://nofear195.github.io/my-hugo-blog/posts/isbn-978-957-32-8860-2/><link rel=stylesheet href=/my-hugo-blog/css/style.min.css><link rel=preload href=/my-hugo-blog/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/my-hugo-blog/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/my-hugo-blog/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/my-hugo-blog/lib/animate/animate.min.css></noscript><meta name=google-site-verification content="R8OkSAeGq2hnBR1wjIj-hhd0W7suy7W9h3Ixk3T04dI"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"封裝 Dapper : 簡化對資料庫的操作","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/nofear195.github.io\/my-hugo-blog\/posts\/dapper-encapsulation\/"},"genre":"posts","keywords":"Dapper, 軟體研發","wordcount":1126,"url":"https:\/\/nofear195.github.io\/my-hugo-blog\/posts\/dapper-encapsulation\/","datePublished":"2023-05-24T00:00:00+00:00","dateModified":"2023-05-25T00:00:00+00:00","publisher":{"@type":"Organization","name":"nofear195"},"author":{"@type":"Person","name":"nofear195"},"description":""}</script></head><body data-header-desktop=sticky data-header-mobile=auto><script>(window.localStorage?.getItem("theme")?localStorage.getItem("theme")==="dark":"auto"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"auto"==="dark")&&document.body.setAttribute("data-theme","dark")</script><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/my-hugo-blog/ title="nofear195's blog"><span class=header-title-text>nofear195's blog</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/my-hugo-blog/about/><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden=true></i> About Me</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/posts/><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden=true></i> Posts</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/categories/><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden=true></i> Categories</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/tags/><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden=true></i> Tags</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id=search-desktop><input type=text placeholder="Search titles or contents ..." id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/my-hugo-blog/ title="nofear195's blog"><span class=header-title-text>nofear195's blog</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents ..." id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>Cancel</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/about/><i class="fa-solid fa-user fa-fw fa-sm" aria-hidden=true></i> About Me</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/posts/><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden=true></i> Posts</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/categories/><i class="fa-solid fa-folder-tree fa-fw fa-sm" aria-hidden=true></i> Categories</a></li><li class=menu-item><a class=menu-link href=/my-hugo-blog/tags/><i class="fa-solid fa-tags fa-fw fa-sm" aria-hidden=true></i> Tags</a></li><li class="menu-item menu-system"><span class="menu-system-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></span></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=Collections></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>封裝 Dapper : 簡化對資料庫的操作</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><span class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+nofear195</span></span><span class=post-included-in>&nbsp;included in <a href=/my-hugo-blog/categories/learning-note/ class=post-category title="Category - learning-note"><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> learning-note</a></span></div><div class=post-meta-line><span title="published on 2023-05-24 00:00:00"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden=true></i><time datetime=2023-05-24>2023-05-24</time></span>&nbsp;<span title="Updated on 2023-05-25 00:00:00"><i class="fa-regular fa-calendar-check fa-fw me-1" aria-hidden=true></i><time datetime=2023-05-25>2023-05-25</time></span>&nbsp;<span title="1126 words"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>About 1200 words</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>3 minutes</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#reference>Reference</a></li><li><a href=#preface>Preface</a></li><li><a href=#steps>Steps</a><ul><li><a href=#1-準備要操作的資料庫>1. 準備要操作的資料庫</a></li><li><a href=#2-下載-dapper-套件>2. 下載 Dapper 套件</a></li><li><a href=#3-定義-dapper-使用介面>3. 定義 Dapper 使用介面</a></li><li><a href=#4-實作-dapper-使用介面>4. 實作 Dapper 使用介面</a></li></ul></li><li><a href=#actual-usage>Actual Usage</a><ul><li><a href=#定義-mapping-至資料庫的-model>定義 Mapping 至資料庫的 Model</a></li><li><a href=#製作-api-controller>製作 API Controller</a></li></ul></li><li><a href=#example-code>Example Code</a></li></ul></nav></div></div><div class=content id=content><p>Mastering Dapper Encapsulation : Tips and Techniques for Simplified Database Access.</p><h2 id=reference class=heading-element><a href=#reference class=heading-mark></a>Reference</h2><ol><li><a href=https://dapper-tutorial.net/dapper target=_blank rel="external nofollow noopener noreferrer">Dapper Tutorial</a></li><li><a href=https://www.c-sharpcorner.com/article/using-dapper-in-asp-net-core-web-api/ target=_blank rel="external nofollow noopener noreferrer">Using Dapper In ASP.NET Core Web API</a></li></ol><h2 id=preface class=heading-element><a href=#preface class=heading-mark></a>Preface</h2><p>最近因工作所需，開始接觸了 .Net 的專案，發現 LINQ 與 EF Core 都不是這麼好用，於是開始了 Dapper 的學習之旅，加上為了使 Dapper 方便好用，就將 Dapper 做封裝，方便之後的專案做參考與使用。</p><h2 id=steps class=heading-element><a href=#steps class=heading-mark></a>Steps</h2><h3 id=1-準備要操作的資料庫 class=heading-element><a href=#1-%e6%ba%96%e5%82%99%e8%a6%81%e6%93%8d%e4%bd%9c%e7%9a%84%e8%b3%87%e6%96%99%e5%ba%ab class=heading-mark></a>1. 準備要操作的資料庫</h3><ol><li><p>下載並啟動資料庫服務</p></li><li><p>下載 .Net 為了支援各類型資料庫所製作的套件包 (以 PostgresSQL 為例)</p><div class=highlight id=id-1><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Bash data-lang=Bash><span class=line><span class=cl>    NuGet<span class=se>\I</span>nstall-Package Npgsql </span></span></code></pre></td></tr></table></div></div></li><li><p>在 appsettings.json 中，添加資料庫的連線字串 (ConnectionStrings)</p><div class=highlight id=id-2><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=s2>&#34;ConnectionStrings&#34;</span><span class=err>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;DefaultConnection&#34;</span><span class=p>:</span> <span class=s2>&#34;Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=;&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li></ol><h3 id=2-下載-dapper-套件 class=heading-element><a href=#2-%e4%b8%8b%e8%bc%89-dapper-%e5%a5%97%e4%bb%b6 class=heading-mark></a>2. 下載 Dapper 套件</h3><div class=highlight id=id-3><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Bash data-lang=Bash><span class=line><span class=cl>    <span class=c1># using Package Manager </span>
+</span></span><span class=line><span class=cl>    NuGet<span class=se>\I</span>nstall-Package Dapper
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># using CLI</span>
+</span></span><span class=line><span class=cl>    $ dotnet add package Dapper
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># clone Dapper GitHub repository</span>
+</span></span><span class=line><span class=cl>    $ git clone https://github.com/StackExchange/Dapper.git</span></span></code></pre></td></tr></table></div></div><ul><li>Nuget 資源 : <a href=https://www.nuget.org/packages/Dapper/ target=_blank rel="external nofollow noopener noreferrer">https://www.nuget.org/packages/Dapper/</a></li></ul><h3 id=3-定義-dapper-使用介面 class=heading-element><a href=#3-%e5%ae%9a%e7%be%a9-dapper-%e4%bd%bf%e7%94%a8%e4%bb%8b%e9%9d%a2 class=heading-mark></a>3. 定義 Dapper 使用介面</h3><div class=highlight id=id-4><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Data.Common</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Dapper</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=k>interface</span> <span class=nc>IDapperORM</span> <span class=p>:</span> <span class=n>IDisposable</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>DbConnection</span> <span class=n>GetDbconnection</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=n>List</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;</span> <span class=n>GetAll</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>T</span><span class=p>?</span> <span class=n>Get</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>Insert</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>Update</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>Delete</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h3 id=4-實作-dapper-使用介面 class=heading-element><a href=#4-%e5%af%a6%e4%bd%9c-dapper-%e4%bd%bf%e7%94%a8%e4%bb%8b%e9%9d%a2 class=heading-mark></a>4. 實作 Dapper 使用介面</h3><ol><li><p>於建構子中，獲取連線字串 (ConnectionStrings)</p><ul><li>.Net 6 之後的服務入口檔案由 Program.cs 取代 Startup.cs ，因此 appsettings.json 會直接註冊到全域中，可以直接提取 json 裡面的內容</li><li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-7.0" target=_blank rel="external nofollow noopener noreferrer">Configuration in ASP.NET Core 7.0</a></li></ul><div class=highlight id=id-5><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Data.Common</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Dapper</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>Npgsql</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>DapperORM</span> <span class=p>:</span> <span class=n>IDapperORM</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=k>readonly</span> <span class=n>IConfiguration</span> <span class=n>_config</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=kt>string</span> <span class=n>Connectionstring</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>DapperORM</span><span class=p>(</span><span class=n>IConfiguration</span> <span class=n>config</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>_config</span> <span class=p>=</span> <span class=n>config</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=kt>var</span> <span class=n>defaultConnection</span> <span class=p>=</span> <span class=n>_config</span><span class=p>[</span><span class=s>&#34;ConnectionStrings:DefaultConnection&#34;</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>        <span class=n>Connectionstring</span> <span class=p>=</span> <span class=n>defaultConnection</span> <span class=p>==</span> <span class=kc>null</span> <span class=p>?</span> <span class=s>&#34;&#34;</span> <span class=p>:</span> <span class=n>defaultConnection</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>實作建立連線方法</p><ul><li>連線方法因資料庫類型而異</li></ul><div class=highlight id=id-6><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=kd>public</span> <span class=n>DbConnection</span> <span class=n>GetDbconnection</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=k>new</span> <span class=n>NpgsqlConnection</span><span class=p>(</span><span class=n>Connectionstring</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>實作 GET, GETALL 函式</p><ul><li>db Query 的方法主要用於從資料庫獲取檔案</li></ul><div class=highlight id=id-7><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=kd>public</span> <span class=n>T</span><span class=p>?</span> <span class=n>Get</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>using</span> <span class=nn>IDbConnection</span> <span class=n>db</span> <span class=p>=</span> <span class=n>GetDbconnection</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>db</span><span class=p>.</span><span class=n>Query</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>).</span><span class=n>FirstOrDefault</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=n>List</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;</span> <span class=n>GetAll</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>using</span> <span class=nn>IDbConnection</span> <span class=n>db</span> <span class=p>=</span> <span class=n>GetDbconnection</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>db</span><span class=p>.</span><span class=n>Query</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>).</span><span class=n>ToList</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>實作 Transaction 機制</p><ul><li>db Execute 的方法主要用於 INSERT, UPDATE, DELETE 等 sql 指令，並回傳指令影響到的 row 個數</li></ul><div class=highlight id=id-8><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=kd>private</span> <span class=kt>int</span> <span class=n>Transaction</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sp</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>rowsAffected</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>using</span> <span class=nn>IDbConnection</span> <span class=n>db</span> <span class=p>=</span> <span class=n>GetDbconnection</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=k>try</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>db</span><span class=p>.</span><span class=n>State</span> <span class=p>==</span> <span class=n>ConnectionState</span><span class=p>.</span><span class=n>Closed</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=n>db</span><span class=p>.</span><span class=n>Open</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>using</span> <span class=nn>var</span> <span class=n>tran</span> <span class=p>=</span> <span class=n>db</span><span class=p>.</span><span class=n>BeginTransaction</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=k>try</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>rowsAffected</span> <span class=p>=</span> <span class=n>db</span><span class=p>.</span><span class=n>Execute</span><span class=p>(</span><span class=n>sp</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>,</span> <span class=n>transaction</span><span class=p>:</span> <span class=n>tran</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=n>tran</span><span class=p>.</span><span class=n>Commit</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>catch</span> <span class=p>(</span><span class=n>Exception</span> <span class=n>ex</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>tran</span><span class=p>.</span><span class=n>Rollback</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=n>ex</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=k>throw</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>catch</span> <span class=p>(</span><span class=n>Exception</span> <span class=n>ex</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>Console</span><span class=p>.</span><span class=n>WriteLine</span><span class=p>(</span><span class=n>ex</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>throw</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=k>finally</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>db</span><span class=p>.</span><span class=n>State</span> <span class=p>==</span> <span class=n>ConnectionState</span><span class=p>.</span><span class=n>Open</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=n>db</span><span class=p>.</span><span class=n>Close</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>rowsAffected</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>實作 INSERT, UPDATE, DELETE 函式</p><div class=highlight id=id-9><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=kd>public</span> <span class=kt>int</span> <span class=n>Insert</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>Transaction</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kt>int</span> <span class=n>Update</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>Transaction</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kt>int</span> <span class=n>Delete</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=kt>string</span> <span class=n>sql</span><span class=p>,</span> <span class=n>DynamicParameters</span><span class=p>?</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=kc>null</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>Transaction</span><span class=p>&lt;</span><span class=n>T</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li></ol><h2 id=actual-usage class=heading-element><a href=#actual-usage class=heading-mark></a>Actual Usage</h2><h3 id=定義-mapping-至資料庫的-model class=heading-element><a href=#%e5%ae%9a%e7%be%a9-mapping-%e8%87%b3%e8%b3%87%e6%96%99%e5%ba%ab%e7%9a%84-model class=heading-mark></a>定義 Mapping 至資料庫的 Model</h3><div class=highlight id=id-10><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=kd>public</span> <span class=k>class</span> <span class=nc>Student</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>int</span> <span class=n>Id</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>String</span><span class=p>?</span> <span class=n>Name</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>int</span> <span class=n>Age</span> <span class=p>{</span> <span class=k>get</span><span class=p>;</span> <span class=k>set</span><span class=p>;</span> <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h3 id=製作-api-controller class=heading-element><a href=#%e8%a3%bd%e4%bd%9c-api-controller class=heading-mark></a>製作 API Controller</h3><ol><li><p>將 Controller 建構子中，注入 Dapper</p><div class=highlight id=id-11><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=na>[Route(&#34;api/[controller]</span><span class=s>&#34;)]
+</span></span></span><span class=line><span class=cl><span class=s></span><span class=kd>public</span> <span class=k>class</span> <span class=nc>StudentController</span> <span class=p>:</span> <span class=n>Controller</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=k>readonly</span> <span class=n>IDapperORM</span> <span class=n>_dapper</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kd>private</span> <span class=k>readonly</span> <span class=kt>string</span> <span class=n>_tableName</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=n>StudentController</span><span class=p>(</span><span class=n>IDapperORM</span> <span class=n>dapper</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>_dapper</span> <span class=p>=</span> <span class=n>dapper</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>_tableName</span> <span class=p>=</span> <span class=s>&#34;Student&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//...</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>建立 GetAll API</p><ul><li>因為 GetAll 比較單純，只需帶入一個參數即可執行</li></ul><div class=highlight id=id-12><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=na>[HttpGet]</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=n>List</span><span class=p>&lt;</span><span class=n>Student</span><span class=p>&gt;&gt;</span> <span class=n>Get</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>string</span> <span class=n>sql</span> <span class=p>=</span> <span class=s>$&#34;Select * from {_tableName}&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>var</span> <span class=n>result</span> <span class=p>=</span> <span class=k>await</span> <span class=n>Task</span><span class=p>.</span><span class=n>FromResult</span><span class=p>(</span><span class=n>_dapper</span><span class=p>.</span><span class=n>GetAll</span><span class=p>&lt;</span><span class=n>Student</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>建立 Get API</p><ul><li>在 sql 指令中用 <code>@</code> 取代要輸入的變數，搭配 DynamicParameters 可防止 SQL injection</li><li>DynamicParameters Add() 函式可逐一加入實際要放入的變數</li></ul><div class=highlight id=id-13><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=na>[HttpGet(&#34;{id}&#34;)]</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=n>Student</span><span class=p>&gt;</span> <span class=n>Get</span><span class=p>(</span><span class=kt>int</span> <span class=n>id</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>string</span> <span class=n>sql</span> <span class=p>=</span> <span class=s>$@&#34;Select * from {_tableName} WHERE ID=@id&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>DynamicParameters</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=k>new</span> <span class=n>DynamicParameters</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>dynamicParameters</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=s>&#34;@id&#34;</span><span class=p>,</span> <span class=n>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>var</span> <span class=n>result</span> <span class=p>=</span> <span class=k>await</span> <span class=n>Task</span><span class=p>.</span><span class=n>FromResult</span><span class=p>(</span><span class=n>_dapper</span><span class=p>.</span><span class=n>Get</span><span class=p>&lt;</span><span class=n>Student</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>result</span> <span class=p>==</span> <span class=kc>null</span> <span class=p>?</span> <span class=k>new</span> <span class=n>Student</span><span class=p>()</span> <span class=p>:</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>建立 Post API</p><ul><li>dynamicParameters AddDynamicParams() 函式可一次性加入物件裡面所有的 key-value 對</li></ul><div class=highlight id=id-14><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=na>[HttpPost]</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=kt>int</span><span class=p>&gt;</span> <span class=n>Post</span><span class=p>(</span><span class=n>Student</span> <span class=n>data</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>string</span> <span class=n>sql</span> <span class=p>=</span> <span class=s>$@&#34;INSERT INTO {_tableName} VALUES (@ID,@Name,@Age)&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>DynamicParameters</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=k>new</span> <span class=n>DynamicParameters</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>dynamicParameters</span><span class=p>.</span><span class=n>AddDynamicParams</span><span class=p>(</span><span class=n>data</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>var</span> <span class=n>result</span> <span class=p>=</span> <span class=k>await</span> <span class=n>Task</span><span class=p>.</span><span class=n>FromResult</span><span class=p>(</span><span class=n>_dapper</span><span class=p>.</span><span class=n>Insert</span><span class=p>&lt;</span><span class=kt>int</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span><span class=n>dynamicParameters</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>建立 Put API</p><div class=highlight id=id-15><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=na>[HttpPut]</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=kt>int</span><span class=p>&gt;</span> <span class=n>Put</span><span class=p>(</span><span class=n>Student</span> <span class=n>data</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>string</span> <span class=n>sql</span> <span class=p>=</span> <span class=s>$@&#34;UPDATE {_tableName} SET Name=@Name,Age=@Age WHERE ID=@Id&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>DynamicParameters</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=k>new</span> <span class=n>DynamicParameters</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>dynamicParameters</span><span class=p>.</span><span class=n>AddDynamicParams</span><span class=p>(</span><span class=n>data</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>var</span> <span class=n>result</span> <span class=p>=</span> <span class=k>await</span> <span class=n>Task</span><span class=p>.</span><span class=n>FromResult</span><span class=p>(</span><span class=n>_dapper</span><span class=p>.</span><span class=n>Update</span><span class=p>&lt;</span><span class=kt>int</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>建立 Delete API</p><div class=highlight id=id-16><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cs data-lang=cs><span class=line><span class=cl><span class=na>[HttpDelete(&#34;{id}&#34;)]</span>
+</span></span><span class=line><span class=cl><span class=kd>public</span> <span class=kd>async</span> <span class=n>Task</span><span class=p>&lt;</span><span class=kt>int</span><span class=p>&gt;</span> <span class=n>Delete</span><span class=p>(</span><span class=kt>int</span> <span class=n>id</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>string</span> <span class=n>sql</span> <span class=p>=</span> <span class=s>$@&#34;DELETE FROM {_tableName} WHERE ID=@id&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>DynamicParameters</span> <span class=n>dynamicParameters</span> <span class=p>=</span> <span class=k>new</span> <span class=n>DynamicParameters</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>dynamicParameters</span><span class=p>.</span><span class=n>Add</span><span class=p>(</span><span class=s>&#34;@id&#34;</span><span class=p>,</span> <span class=n>id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>var</span> <span class=n>result</span> <span class=p>=</span> <span class=k>await</span> <span class=n>Task</span><span class=p>.</span><span class=n>FromResult</span><span class=p>(</span><span class=n>_dapper</span><span class=p>.</span><span class=n>Delete</span><span class=p>&lt;</span><span class=kt>int</span><span class=p>&gt;(</span><span class=n>sql</span><span class=p>,</span> <span class=n>dynamicParameters</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div></li><li><p>使用 Swagger 查看成果
+<img loading=lazy src=/my-hugo-blog/images/dapper-encapsulation-1.png alt=dapper-encapsulation-1 srcset="/my-hugo-blog/images/dapper-encapsulation-1.png?size=small, /my-hugo-blog/images/dapper-encapsulation-1.png?size=medium 1.5x, /my-hugo-blog/images/dapper-encapsulation-1.png?size=large 2x" sizes=auto data-title=dapper-encapsulation-1 style="--width:3010px;--aspect-ratio:3010 / 1662;background:url(/my-hugo-blog/images/loading.min.svg)no-repeat 50%" onload='this.title=this.dataset.title;for(const e of["style","data-title","onerror","onload"])this.removeAttribute(e);this.dataset.lazyloaded=""' onerror='this.title=this.dataset.title;for(const e of["style","data-title","onerror","onload"])this.removeAttribute(e)'></p></li></ol><h2 id=example-code class=heading-element><a href=#example-code class=heading-mark></a>Example Code</h2><p><a href=https://github.com/nofear195/dotnet-project-template target=_blank rel="external nofollow noopener noreferrer">dotnet-project-template</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="Updated on 2023-05-25 00:00:00">Updated on 2023-05-25&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc-sa/4.0/ target=_blank>CC BY-NC-SA 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md><span><a href=/my-hugo-blog/posts/dapper-encapsulation/index.md title="Read Markdown" class=link-to-markdown>Read Markdown</a></span><span><a href="https://github.com/nofear195/my-hugo-blog.git/blob/main/content/posts/learning-note/dapper-encapsulation.md?plain=1" title="View source" target=_blank rel="external nofollow noopener noreferrer" class=link-to-source>View source</a></span><span><a href=https://github.com/nofear195/my-hugo-blog.git/edit/main/content/posts/learning-note/dapper-encapsulation.md title="Edit this page" target=_blank rel="external nofollow noopener noreferrer" class=link-to-edit>Edit this page</a></span><span><a href="https://github.com/nofear195/my-hugo-blog.git/issues/new?title=[BUG]%20%E5%B0%81%E8%A3%9D+Dapper+%3A+%E7%B0%A1%E5%8C%96%E5%B0%8D%E8%B3%87%E6%96%99%E5%BA%AB%E7%9A%84%E6%93%8D%E4%BD%9C&amp;body=%7cField%7cValue%7c%0A%7c-%7c-%7c%0A%7cTitle%7c%E5%B0%81%E8%A3%9D+Dapper+%3A+%E7%B0%A1%E5%8C%96%E5%B0%8D%E8%B3%87%E6%96%99%E5%BA%AB%E7%9A%84%E6%93%8D%E4%BD%9C%7c%0A%7cURL%7chttps://nofear195.github.io/my-hugo-blog/posts/dapper-encapsulation/%7c%0A%7cFilename%7chttps://github.com/nofear195/my-hugo-blog.git/blob/main/content/posts/learning-note/dapper-encapsulation.md?plain=1%7c" title="Report issue" target=_blank rel="external nofollow noopener noreferrer" class=link-to-report>Report issue</a></span></div><div class=post-info-share><span><a href=javascript:void(0); title="Share on Twitter" data-sharer=twitter data-url=https://nofear195.github.io/my-hugo-blog/posts/dapper-encapsulation/ data-title="封裝 Dapper : 簡化對資料庫的操作" data-hashtags=Dapper,軟體研發><i class="fa-brands fa-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="Share on Facebook" data-sharer=facebook data-url=https://nofear195.github.io/my-hugo-blog/posts/dapper-encapsulation/ data-hashtag=Dapper><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/my-hugo-blog/tags/dapper/ class=post-tag title="Tags - Dapper">Dapper</a><a href=/my-hugo-blog/tags/%E8%BB%9F%E9%AB%94%E7%A0%94%E7%99%BC/ class=post-tag title="Tags - 軟體研發">軟體研發</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>Back</a></span>&nbsp;|&nbsp;<span><a href=/my-hugo-blog/>Home</a></span></section></div><div class=post-nav><a href=/my-hugo-blog/posts/innovation-and-dialogue/ class=post-nav-item rel=prev title=創新與重點訊息傳達><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>創新與重點訊息傳達</a>
+<a href=/my-hugo-blog/posts/isbn-978-957-32-8860-2/ class=post-nav-item rel=next title="[閱讀] 習慣致富人生實踐版">[閱讀] 習慣致富人生實踐版<i class="fa-solid fa-angle-right fa-fw" aria-hidden=true></i></a></div></div></article><aside class=toc id=toc-auto aria-label=Contents><h2 class=toc-title>Contents&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class=toc-content id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">Powered by <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.122.0"><img class=hugo-icon src=/my-hugo-blog/images/hugo.min.svg alt="Hugo logo"> Hugo</a> | Theme - <a href=https://github.com/hugo-fixit/FixIt target=_blank rel=external title="FixIt v0.3.2-RC"><img class=fixit-icon src=/my-hugo-blog/images/fixit.min.svg alt="FixIt logo"> FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw" aria-hidden=true></i>
+<span itemprop=copyrightYear>2022 - 2024</span><span class=author itemprop=copyrightHolder>
+<a href=/my-hugo-blog/>nofear195</a></span></div></div></footer></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label="Back to Top"><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class="variant-numeric d-none">0%</span></div></div><div id=mask></div><noscript><div class=noscript-warning>Theme FixIt works best with JavaScript enabled.</div></noscript></div><link rel=stylesheet href=/my-hugo-blog/lib/lightgallery/css/lightgallery-bundle.min.css><link rel=preload href=/my-hugo-blog/lib/katex/katex.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/my-hugo-blog/lib/katex/katex.min.css></noscript><link rel=stylesheet href=/my-hugo-blog/lib/cookieconsent/cookieconsent.min.css><script src=/my-hugo-blog/lib/autocomplete/autocomplete.min.js defer></script><script src=/my-hugo-blog/lib/fuse/fuse.min.js defer></script><script src=/my-hugo-blog/lib/lightgallery/lightgallery.min.js defer></script><script src=/my-hugo-blog/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js defer></script><script src=/my-hugo-blog/lib/lightgallery/plugins/zoom/lg-zoom.min.js defer></script><script src=/my-hugo-blog/lib/sharer/sharer.min.js async defer></script><script src=/my-hugo-blog/lib/katex/katex.min.js defer></script><script src=/my-hugo-blog/lib/katex/auto-render.min.js defer></script><script src=/my-hugo-blog/lib/katex/copy-tex.min.js defer></script><script src=/my-hugo-blog/lib/katex/mhchem.min.js defer></script><script src=/my-hugo-blog/lib/cookieconsent/cookieconsent.min.js defer></script><script>window.config={code:{copyTitle:"Copy to clipboard",editLockTitle:"Lock editable code block",editUnLockTitle:"Unlock editable code block",editable:!0,maxShownLines:10},comment:{enable:!1},cookieconsent:{content:{dismiss:"Got it!",link:"Learn more",message:"This website uses Cookies to improve your experience."},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},enablePWA:!0,lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{distance:100,findAllMatches:!1,fuseIndexURL:"/my-hugo-blog/index.json",highlightTag:"em",ignoreFieldNorm:!1,ignoreLocation:!1,isCaseSensitive:!1,location:0,maxResultLength:10,minMatchCharLength:2,noResultsFound:"No results found",snippetLength:30,threshold:.3,type:"fuse",useExtendedSearch:!1}}</script><script src=/my-hugo-blog/js/theme.min.js defer></script></body></html>
