@@ -6,7 +6,7 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["Leetcode"]
-tags: ["Leetcode","Python","JavaScript"]
+tags: ["Leetcode","Python"]
 lightgallery: true
 
 ---
