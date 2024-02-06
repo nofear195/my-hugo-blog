@@ -533,7 +533,7 @@ enableEmoji = true
   # FixIt 0.2.16 | CHANGED Social config about the author
   [params.social]
     GitHub = "nofear195"
-    Linkedin = ""
+    Linkedin = "yan-ting-chen-frank"
     Twitter = ""
     Instagram = "aaasss777as"
     Facebook = ""
@@ -648,11 +648,11 @@ enableEmoji = true
     # whether to show link to Raw Markdown content of the post
     linkToMarkdown = true
     # FixIt 0.3.0 | NEW whether to show link to view source code of the post
-    linkToSource = true
+    linkToSource = false
     # FixIt 0.3.0 | NEW whether to show link to edit the post
-    linkToEdit = true
+    linkToEdit = false
     # FixIt 0.3.0 | NEW whether to show link to report issue for the post
-    linkToReport = true
+    linkToReport = false
     # whether to show the full text content in RSS
     rssFullText = false
     # FixIt 0.2.13 | NEW Page style ["narrow", "normal", "wide", ...]
@@ -671,7 +671,7 @@ enableEmoji = true
     # FixIt 0.3.0 | NEW whether to enable collection list at the sidebar
     collectionList = false
     # FixIt 0.3.0 | NEW whether to enable collection navigation at the end of the post
-    collectionNavigation = false
+    collectionNavigation = true
 
     # FixIt 0.2.15 | NEW Repost config
     [params.page.repost]
@@ -727,7 +727,7 @@ enableEmoji = true
       # whether to show the copy button of the code block
       copy = true
       # FixIt 0.2.13 | NEW whether to show the edit button of the code block
-      edit = true
+      edit = false
       # the maximum number of lines of displayed code by default
       maxShownLines = 10
     # Mapbox GL JS config (https://docs.mapbox.com/mapbox-gl-js)
@@ -773,8 +773,8 @@ enableEmoji = true
     [params.page.share]
       enable = true
       Twitter = true
-      Facebook = true
-      Linkedin = false
+      Facebook = false
+      Linkedin = true
       Whatsapp = false
       Pinterest = false
       Tumblr = false
