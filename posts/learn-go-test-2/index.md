@@ -83,33 +83,33 @@ type Stringer interface {
 ### if-else
 
 ```go
-    num := 10
-    if num &gt; 0 {
-        fmt.Println(&#34;Number is positive&#34;)
-    } else if num == 0 {
-        fmt.Println(&#34;Number is zero&#34;)
-    } else {
-        fmt.Println(&#34;Number is negative&#34;)
-    }
+num := 10
+if num &gt; 0 {
+    fmt.Println(&#34;Number is positive&#34;)
+} else if num == 0 {
+    fmt.Println(&#34;Number is zero&#34;)
+} else {
+    fmt.Println(&#34;Number is negative&#34;)
+}
 
-    // Example of if statement within initialization
-    if num := 15; num &gt; 10 {
-        fmt.Println(&#34;Number is greater than 10&#34;)
-    }
+// Example of if statement within initialization
+if num := 15; num &gt; 10 {
+    fmt.Println(&#34;Number is greater than 10&#34;)
+}
 ```
 
 ### switch-case
 
 ```go
-    fruit := &#34;apple&#34;
-    switch fruit {
-    case &#34;apple&#34;:
-        fmt.Println(&#34;It&#39;s an apple&#34;)
-    case &#34;banana&#34;:
-        fmt.Println(&#34;It&#39;s a banana&#34;)
-    default:
-        fmt.Println(&#34;It&#39;s something else&#34;)
-    }
+fruit := &#34;apple&#34;
+switch fruit {
+case &#34;apple&#34;:
+    fmt.Println(&#34;It&#39;s an apple&#34;)
+case &#34;banana&#34;:
+    fmt.Println(&#34;It&#39;s a banana&#34;)
+default:
+    fmt.Println(&#34;It&#39;s something else&#34;)
+}
 
 ```
 

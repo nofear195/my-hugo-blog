@@ -78,28 +78,28 @@ Task : 撰寫一個 Hello function，輸入 人名，輸出 Hello, 人名
     - file
 
         ```go {title=&#34;hello_test.go&#34;}
-          package hello
+        package hello
 
-          import &#34;testing&#34;
+        import &#34;testing&#34;
 
-          func TestHello(t *testing.T) {
+        func TestHello(t *testing.T) {
 
-            got := Hello(&#34;Frank&#34;)
-            want := &#34;Hello, Frank&#34;
+          got := Hello(&#34;Frank&#34;)
+          want := &#34;Hello, Frank&#34;
 
-            if got != want {
-              t.Errorf(&#34;got %q want %q&#34;, got, want)
-            }
+          if got != want {
+            t.Errorf(&#34;got %q want %q&#34;, got, want)
           }
+        }
         ```
 
     - result
 
       ```bash
-        vscode ➜ /workspaces/learn-go/hello $ go test
-        # test-with-go/hello [test-with-go/hello.test]
-        ./hello_test.go:7:9: undefined: Hello
-        FAIL    test-with-go/hello [build failed]
+      vscode ➜ /workspaces/learn-go/hello $ go test
+      # test-with-go/hello [test-with-go/hello.test]
+      ./hello_test.go:7:9: undefined: Hello
+      FAIL    test-with-go/hello [build failed]
       ```
 
 2. 撰寫 function : Hello
@@ -107,19 +107,19 @@ Task : 撰寫一個 Hello function，輸入 人名，輸出 Hello, 人名
     - file
 
         ```go {title=&#34;hello.go&#34;}
-          package hello
+        package hello
 
-          func Hello(name string) string {
-            return &#34;Hello, &#34; &#43; name
-          }
+        func Hello(name string) string {
+          return &#34;Hello, &#34; &#43; name
+        }
         ```
 
     - result
 
       ```bash
-        vscode ➜ /workspaces/learn-go/hello $ go test
-        PASS
-        ok      test-with-go/hello      0.001s
+      vscode ➜ /workspaces/learn-go/hello $ go test
+      PASS
+      ok      test-with-go/hello      0.001s
       ```
 
 3. 新增測試子項目，假設輸入為空字串值時
@@ -127,43 +127,43 @@ Task : 撰寫一個 Hello function，輸入 人名，輸出 Hello, 人名
     - file
 
         ```go {title=&#34;hello_test.go&#34;}
-          func TestHello(t *testing.T) {
+        func TestHello(t *testing.T) {
 
-            t.Run(&#34;saying hello to people&#34;, func(t *testing.T) {
-              got := Hello(&#34;Frank&#34;)
-              want := &#34;Hello, Frank&#34;
+          t.Run(&#34;saying hello to people&#34;, func(t *testing.T) {
+            got := Hello(&#34;Frank&#34;)
+            want := &#34;Hello, Frank&#34;
 
-              if got != want {
-                t.Errorf(&#34;got %q want %q&#34;, got, want)
-              }
-            })
+            if got != want {
+              t.Errorf(&#34;got %q want %q&#34;, got, want)
+            }
+          })
 
-            t.Run(&#34;say &#39;Hello, World&#39; when an empty string is supplied&#34;, func(t *testing.T) {
-              got := Hello(&#34;&#34;)
-              want := &#34;Hello, World&#34;
+          t.Run(&#34;say &#39;Hello, World&#39; when an empty string is supplied&#34;, func(t *testing.T) {
+            got := Hello(&#34;&#34;)
+            want := &#34;Hello, World&#34;
 
-              if got != want {
-                t.Errorf(&#34;got %q want %q&#34;, got, want)
-              }
-            })
+            if got != want {
+              t.Errorf(&#34;got %q want %q&#34;, got, want)
+            }
+          })
 
-          }
+        }
         ```
 
     - result
 
       ```bash
-          vscode ➜ /workspaces/learn-go/hello $ go test -v
-          === RUN   TestHello
-          === RUN   TestHello/saying_hello_to_people
-          === RUN   TestHello/say_&#39;Hello,_World&#39;_when_an_empty_string_is_supplied
-              hello_test.go:22: got &#34;Hello, &#34; want &#34;Hello, World&#34;
-          --- FAIL: TestHello (0.00s)
-              --- PASS: TestHello/saying_hello_to_people (0.00s)
-              --- FAIL: TestHello/say_&#39;Hello,_World&#39;_when_an_empty_string_is_supplied (0.00s)
-          FAIL
-          exit status 1
-          FAIL    test-with-go/hello      0.001s
+      vscode ➜ /workspaces/learn-go/hello $ go test -v
+      === RUN   TestHello
+      === RUN   TestHello/saying_hello_to_people
+      === RUN   TestHello/say_&#39;Hello,_World&#39;_when_an_empty_string_is_supplied
+          hello_test.go:22: got &#34;Hello, &#34; want &#34;Hello, World&#34;
+      --- FAIL: TestHello (0.00s)
+          --- PASS: TestHello/saying_hello_to_people (0.00s)
+          --- FAIL: TestHello/say_&#39;Hello,_World&#39;_when_an_empty_string_is_supplied (0.00s)
+      FAIL
+      exit status 1
+      FAIL    test-with-go/hello      0.001s
       ```
 
 4. 更新 Hello function
@@ -171,20 +171,20 @@ Task : 撰寫一個 Hello function，輸入 人名，輸出 Hello, 人名
     - file
 
         ```go {title=&#34;hello.go&#34;}
-          func Hello(name string) string {
-            if name == &#34;&#34; {
-              name = &#34;World&#34;
-            }
-            return &#34;Hello, &#34; &#43; name
+        func Hello(name string) string {
+          if name == &#34;&#34; {
+            name = &#34;World&#34;
           }
+          return &#34;Hello, &#34; &#43; name
+        }
         ```
 
     - result
 
       ```bash
-        vscode ➜ /workspaces/learn-go/hello $ go test
-        PASS
-        ok      test-with-go/hello      0.001s
+      vscode ➜ /workspaces/learn-go/hello $ go test
+      PASS
+      ok      test-with-go/hello      0.001s
       ```
 
 5. 提取相同邏輯的程式碼片段，獨立成一個可重複使用的函式
@@ -192,36 +192,36 @@ Task : 撰寫一個 Hello function，輸入 人名，輸出 Hello, 人名
     - file
 
         ```go {title=&#34;hello_test.go&#34;}
-          // package 私有函數開頭為小寫字母
-          func assertCorrectMessage(t testing.TB, got, want string) {
-            t.Helper()
-            if got != want {
-              t.Errorf(&#34;got %q want %q&#34;, got, want)
-            }
+        // package 私有函數開頭為小寫字母
+        func assertCorrectMessage(t testing.TB, got, want string) {
+          t.Helper()
+          if got != want {
+            t.Errorf(&#34;got %q want %q&#34;, got, want)
           }
-          func TestHello(t *testing.T) {
+        }
+        func TestHello(t *testing.T) {
 
-            t.Run(&#34;saying hello to people&#34;, func(t *testing.T) {
-              got := Hello(&#34;Frank&#34;)
-              want := &#34;Hello, Frank&#34;
-              assertCorrectMessage(t, got, want)
-            })
+          t.Run(&#34;saying hello to people&#34;, func(t *testing.T) {
+            got := Hello(&#34;Frank&#34;)
+            want := &#34;Hello, Frank&#34;
+            assertCorrectMessage(t, got, want)
+          })
 
-            t.Run(&#34;say &#39;Hello, World&#39; when an empty string is supplied&#34;, func(t *testing.T) {
-              got := Hello(&#34;&#34;)
-              want := &#34;Hello, World&#34;
-              assertCorrectMessage(t, got, want)
-            })
+          t.Run(&#34;say &#39;Hello, World&#39; when an empty string is supplied&#34;, func(t *testing.T) {
+            got := Hello(&#34;&#34;)
+            want := &#34;Hello, World&#34;
+            assertCorrectMessage(t, got, want)
+          })
 
-          }
+        }
         ```
 
     - result
 
       ```bash
-        vscode ➜ /workspaces/learn-go/hello $ go test
-        PASS
-        ok      test-with-go/hello      0.001s
+      vscode ➜ /workspaces/learn-go/hello $ go test
+      PASS
+      ok      test-with-go/hello      0.001s
       ```
 
 ## Go Tools
