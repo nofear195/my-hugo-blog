@@ -78,17 +78,7 @@ enableEmoji = true
     weight = 3
     [menu.main.params]
       icon = "fa-solid fa-folder-tree"
-  [[menu.main]]
-    identifier = "tags"
-    parent = ""
-    pre = ""
-    post = ""
-    name = "Tags"
-    url = "/tags/"
-    title = ""
-    weight = 4
-    [menu.main.params]
-      icon = "fa-solid fa-tags"
+
 
 # -------------------------------------------------------------------------------------
 # Related content Configuration

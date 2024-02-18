@@ -1,6 +1,6 @@
 ---
 title: "從測試中學習 Go 語言 (變數、條件判斷篇)"
-date: 2024-02-18
+date: 2024-02-17
 lastmod: 2024-02-18
 draft: false
 authors: ["nofear195"]
@@ -93,33 +93,33 @@ type Stringer interface {
 ### if-else
 
 ```go
-    num := 10
-    if num > 0 {
-        fmt.Println("Number is positive")
-    } else if num == 0 {
-        fmt.Println("Number is zero")
-    } else {
-        fmt.Println("Number is negative")
-    }
+num := 10
+if num > 0 {
+    fmt.Println("Number is positive")
+} else if num == 0 {
+    fmt.Println("Number is zero")
+} else {
+    fmt.Println("Number is negative")
+}
 
-    // Example of if statement within initialization
-    if num := 15; num > 10 {
-        fmt.Println("Number is greater than 10")
-    }
+// Example of if statement within initialization
+if num := 15; num > 10 {
+    fmt.Println("Number is greater than 10")
+}
 ```
 
 ### switch-case
 
 ```go
-    fruit := "apple"
-    switch fruit {
-    case "apple":
-        fmt.Println("It's an apple")
-    case "banana":
-        fmt.Println("It's a banana")
-    default:
-        fmt.Println("It's something else")
-    }
+fruit := "apple"
+switch fruit {
+case "apple":
+    fmt.Println("It's an apple")
+case "banana":
+    fmt.Println("It's a banana")
+default:
+    fmt.Println("It's something else")
+}
 
 ```
 
