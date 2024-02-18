@@ -1,6 +1,6 @@
 ---
 title: "從測試中學習 Go 語言 (測試流程篇)"
-date: 2024-02-18
+date: 2024-02-17
 lastmod: 2024-02-18
 draft: false
 authors: ["nofear195"]
@@ -50,7 +50,7 @@ Test-Driven Development (TDD) 測試驅動開發，一種軟體開發的方法�
 - 測試函數 : ```func TestXxx(t *testing.T){...}```
   - 名稱前綴須為： **Test**
   - 只能接收一個參數 **t *testing.T**
-  - 測試指令 : ```go test```
+  - 測試指令 : ```go test``` ( "-v" : 可列出所有執行的子函數執行狀況)
 - 子測試函數 subtest (optional): ```t.Run('subtest name',func(t *testing.T){...})```
   - 使用時機 ：同一函數面對各種輸入條件下的結果
   - 位置 ： 主要測試函數內
@@ -163,13 +163,17 @@ Task : 撰寫一個 Hello function，輸入 人名，輸出 Hello, 人名
     - result
 
       ```bash
-        vscode ➜ /workspaces/learn-go/hello $ go test
-        --- FAIL: TestHello (0.00s)
-            --- FAIL: TestHello/say_'Hello,_World'_when_an_empty_string_is_supplied (0.00s)
-                hello_test.go:21: got "Hello, " want "Hello, World"
-        FAIL
-        exit status 1
-        FAIL    test-with-go/hello      0.001s
+          vscode ➜ /workspaces/learn-go/hello $ go test -v
+          === RUN   TestHello
+          === RUN   TestHello/saying_hello_to_people
+          === RUN   TestHello/say_'Hello,_World'_when_an_empty_string_is_supplied
+              hello_test.go:22: got "Hello, " want "Hello, World"
+          --- FAIL: TestHello (0.00s)
+              --- PASS: TestHello/saying_hello_to_people (0.00s)
+              --- FAIL: TestHello/say_'Hello,_World'_when_an_empty_string_is_supplied (0.00s)
+          FAIL
+          exit status 1
+          FAIL    test-with-go/hello      0.001s
       ```
 
 4. 更新 Hello function
