@@ -6,12 +6,11 @@ draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["Go"]
-tags: ["Go","Test","TDD"]
+tags: ["Go","array","slice","map"]
 lightgallery: true
 
 ---
 
-藉由 Go 內建完整的測試系統，同時學習 Go 程式語言與測試開發流程
 
 <!--more-->
 
