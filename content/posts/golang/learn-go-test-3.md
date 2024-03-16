@@ -11,7 +11,6 @@ lightgallery: true
 
 ---
 
-
 <!--more-->
 
 ## Iteration

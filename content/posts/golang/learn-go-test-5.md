@@ -1,6 +1,6 @@
 ---
 title: "從測試中學習 Go 語言 (結構與介面篇)"
-date: 2024-02-23
+date: 2024-02-25
 lastmod: 2024-02-25
 draft: false
 authors: ["nofear195"]
@@ -10,8 +10,6 @@ tags: ["Go","struct","method","interface","table-driven-test"]
 lightgallery: true
 
 ---
-
-
 
 <!--more-->
 
