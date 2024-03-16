@@ -1,8 +1,6 @@
 # 從測試中學習 Go 語言 (結構與介面篇)
 
 
-
-
 &lt;!--more--&gt;
 
 ## Exported and Unexported identifiers

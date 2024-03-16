@@ -1,7 +1,6 @@
 # 從測試中學習 Go 語言 (迴圈迭代篇)
 
 
-
 &lt;!--more--&gt;
 
 ## Iteration
