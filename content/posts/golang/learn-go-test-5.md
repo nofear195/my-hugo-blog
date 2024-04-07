@@ -2,7 +2,7 @@
 title: "從測試中學習 Go 語言 (結構與介面篇)"
 date: 2024-02-25
 lastmod: 2024-02-25
-draft: false
+draft: true
 authors: ["nofear195"]
 description: ""
 categories: ["Go"]
