@@ -41,7 +41,7 @@ y_dict = {key1: value1, ...}
 ## element accessings
 y_dict[key1] = value
 value = y_dict[key1]
-value = y_dict(key1, 'default_value')
+value = y_dict.get(key1, 'default_value')
 
 ## lterating
 for key in y_dict:
@@ -171,7 +171,7 @@ len(y_set)
   - 在同一個 list 的組合需考慮重複組合的情形，適用雙指針效率較高
 
   ```Python
-  def threeSum(self, nums: List[int]) -> List[List[int]]:
+  def threeSum(nums: List[int]) -> List[List[int]]:
     ans = []
     nums.sort() # 先排序為接下的指針比較做準備
 
