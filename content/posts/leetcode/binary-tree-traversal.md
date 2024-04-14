@@ -227,6 +227,10 @@ lightgallery: true
     return root
   ```
 
+## Epilogue
+
+- tree 的操作牽涉到許多重複的行為，通常需要熟悉遞迴與迭代的技巧
+
 ## Reference
 
 [代码随想录](https://github.com/youngyangyang04/leetcode-master)

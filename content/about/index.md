@@ -11,7 +11,7 @@ lightgallery: true
 
 ### Hi there 👋
 
-I'm nofear195, a software engineer with a background in full-stack web development.
+I'm nofear195, just a little software engineer in a big, big, big world.
 
 相信成長，改變階級複製的桎梏。
 
