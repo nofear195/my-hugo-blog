@@ -1,7 +1,7 @@
 ---
 title: "[ Leetcode ] Binary Tree - Traversal"
 date: 2024-04-08
-lastmod: 2024-04-08
+lastmod: 2024-04-24
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -30,9 +30,11 @@ lightgallery: true
 
 1. Depth-first traversal:
     - 先往深度走，遇到 leaf node 再往回走
-    - Preorder traversal (`中`左右)
     - Inorder traversal (左`中`右)
+    - Preorder traversal (`中`左右)
+      - 隱含由當前節點往下探索概念，適合找 binary tree `深度`
     - Postorder traversal (左`右`中)
+      - 隱含找當前節點的 parent 向上延伸概念，適合找 binary tree `高度`
 2. Breadth-first traversl: (level-order-traversal)
     - 逐層遍歷
 
@@ -161,6 +163,63 @@ lightgallery: true
   - [637. Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree)
   - [429. N-ary Tree Level Order Traversal](https://leetcode.com/problems/n-ary-tree-level-order-traversal)
   - [515. Find Largest Value in Each Tree Row](https://leetcode.com/problems/find-largest-value-in-each-tree-row)
+
+### Depth of Binary Tree
+
+- [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree)
+
+  - postorder traversal : root -> leaf 最小距離 = 最小深度
+  - Recursive
+    1. 參數與返回值
+       - 參數：root，計算底下子樹最小深度
+       - 返回值：深度
+    2. 終止條件
+       - 若節點為空，回傳高度為 0
+    3. 單層邏輯
+       - 若左子樹為空，右子樹不為空：最小深度為 1 + 右子樹深度
+       - 若左子樹不為空，右子樹為空：最小深度為 1 + 左子樹深度
+       - 若左右子樹皆不為空：最小深度為 1 + 左右子樹取最小值
+
+  ```Python
+  def minDepth(root: Optional[TreeNode]) -> int:
+    
+    def getDepth(node: Optional[TreeNoed]) -> int:
+      if node is None: return 0
+
+      leftDepth = getDepth(node.left) # 左
+      rightDepth = getDepth(node.right) # 右
+
+      if node.left is None and node.right: return 1 + rightDepth
+      if node.left and node.right is None: return 1 + leftDepth
+      return 1 + min(leftDepth + rightDepth) # 中
+    
+    return getDepth(root)
+  ```
+
+  - levelorder traversal
+  - Iterative
+    - 只有當左右節點皆為空時，遍歷才會是最低點 (其中一個節點不為空不算)
+
+  ```Python
+  from collections import deque
+  def minDepth(root: Optional[TreeNode]) -> int:
+    if root in None: return  0
+
+    depth = 0
+    que = deque([root])
+    while que:
+      size = len(que)
+      depth += 1
+      for _ in range(size):
+        node = que.popleft()
+        if node.left: que.append(node.left) # 左
+        if node.right: que.append(node.right) # 右
+        if node.left is None and node.right is None: # 中
+          return depth
+  ```
+
+- Related
+  - [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree)
 
 ### Invert Binary Tree
 

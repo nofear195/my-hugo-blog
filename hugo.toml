@@ -6,7 +6,7 @@
 # website title
 title = "nofear195's blog"
 # Hostname (and path) to the root
-baseURL = "https://nofear195.github.io/my-hugo-blog/"
+baseURL = "https://nofear195.github.io"
 # theme list
 theme = ["FixIt"] # enable in your site config file
 # determines default content language ["en", "zh-cn", "fr", "pl", ...]
@@ -324,7 +324,7 @@ enableEmoji = true
   # FixIt 0.3.0 | NEW public Git repository information only then enableGitInfo is true
   [params.gitInfo]
     # e.g. "https://github.com/hugo-fixit/docs"
-    repo = "https://github.com/nofear195/my-hugo-blog.git"
+    repo = "https://github.com/nofear195/nofear195.github.io.git"
     branch = "main"
     # the content directory path relative to the root of the repository
     dir = "content"

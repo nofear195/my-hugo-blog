@@ -14,71 +14,7 @@ lightgallery: true
 
 <!--more-->
 
-## Operations
-
-### Concept
-
-- binary tree `深度`: preorder tarversal -> (中, 左, 右) 往下探索
-- brnary tree `高度`: postorder taversal -> (左, 右, 中) 向上延伸
-
 ## Base Questions
-
-### Depth of Binary Tree
-
-- [111. Minimum Depth of Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree)
-
-  - postorder traversal : root -> leaf 最小距離 = 最小深度
-  - Recursive
-    1. 參數與返回值
-       - 參數：root，計算底下子樹最小深度
-       - 返回值：深度
-    2. 終止條件
-       - 若節點為空，回傳高度為 0
-    3. 單層邏輯
-       - 若左子樹為空，右子樹不為空：最小深度為 1 + 右子樹深度
-       - 若左子樹不為空，右子樹為空：最小深度為 1 + 左子樹深度
-       - 若左右子樹皆不為空：最小深度為 1 + 左右子樹取最小值
-
-  ```Python
-  def minDepth(root: Optional[TreeNode]) -> int:
-    
-    def getDepth(node: Optional[TreeNoed]) -> int:
-      if node is None: return 0
-
-      leftDepth = getDepth(node.left) # 左
-      rightDepth = getDepth(node.right) # 右
-
-      if node.left is None and node.right: return 1 + rightDepth
-      if node.left and node.right is None: return 1 + leftDepth
-      return 1 + min(leftDepth + rightDepth) # 中
-    
-    return getDepth(root)
-  ```
-
-  - levelorder traversal
-  - Iterative
-    - 只有當左右節點皆為空時，遍歷才會是最低點 (其中一個節點不為空不算)
-
-  ```Python
-  from collections import deque
-  def minDepth(root: Optional[TreeNode]) -> int:
-    if root in None: return  0
-
-    depth = 0
-    que = deque([root])
-    while que:
-      size = len(que)
-      depth += 1
-      for _ in range(size):
-        node = que.popleft()
-        if node.left: que.append(node.left) # 左
-        if node.right: que.append(node.right) # 右
-        if node.left is None and node.right is None: # 中
-          return depth
-  ```
-
-- Related
-  - [104. Maximum Depth of Binary Tree](https://leetcode.com/problems/maximum-depth-of-binary-tree)
 
 ### Symmetric Tree
 
@@ -172,7 +108,7 @@ lightgallery: true
        - 當前節點 + 左右子樹的節點數量總和
 
   ```Python
-   def countNodes(root: Optional[TreeNode]) -> int:
+  def countNodes(root: Optional[TreeNode]) -> int:
     
     def getSum(current: Optional[TreeNoed]) -> int:
       if node is None: return 0
@@ -220,7 +156,7 @@ lightgallery: true
        - 計算左右子樹的高度落差，若差值小於等於１，則返回當前高度，否則返回 -1
 
   ```Python
-   def isBalanced(self, root: Optional[TreeNode]) -> bool:
+  def isBalanced(self, root: Optional[TreeNode]) -> bool:
     
     def getHeight(current: Optional[TreeNoed]) -> int:
       if current is None: return 0
@@ -255,7 +191,7 @@ lightgallery: true
        - 使用 `回溯` 加入到路徑參數，遍歷左右子樹
 
   ```Python
-   def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
+  def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
 
     def traversal(current: Optional[TreeNode], path: str, result: List[str]) -> None:
       
@@ -278,7 +214,7 @@ lightgallery: true
     - 使用兩個 stack，一個遍歷時需保存的節點順序、一個保存遍歷路徑
 
   ```Python
-   def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
+  def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
     if root is None: return []
 
     result = []
@@ -320,7 +256,7 @@ lightgallery: true
        - 加總所有總和
 
   ```Python
-   def sumOfLeftLeaves(root: Optional[TreeNode]) -> int:
+  def sumOfLeftLeaves(root: Optional[TreeNode]) -> int:
     if root is None: return 0
     if root.left is None and root.right is None: return 0
 
@@ -339,7 +275,7 @@ lightgallery: true
   - Iterative
 
   ```Python
-   def sumOfLeftLeaves(root: Optional[TreeNode]) -> int:
+  def sumOfLeftLeaves(root: Optional[TreeNode]) -> int:
     if root is None : return 0
     
     result = 0
@@ -357,6 +293,59 @@ lightgallery: true
         node = stack.pop()
         if node.left and node.left.left is None and node.left.right is None:
           result += node.left.val
+    return result
+  ```
+
+### Find Bottom Left Tree Value
+
+- [513. Find Bottom Left Tree Value](https://leetcode.com/problems/find-bottom-left-tree-value)
+
+  - 與 traversal order 較無關，優先找左子樹的葉節點以更新結果
+  - Recursive
+    1. 參數與返回值
+       - 參數：根節點、當前深度
+       - 返回值：無
+       - 全域變數：最大深度、最大深度節點的值
+    2. 終止條件
+       - 當前節點為葉節點，更新全域變數的深度、節點值
+    3. 單層邏輯
+       - 遞迴求左右子樹
+
+  ```Python
+  def findBottomLeftValue(root: Optional[TreeNode]) -> int:
+    self.maxDepth = float("-inf")
+    self.result = None
+
+    def traversal(root, depth) -> None:
+      if root.left is None and root.right is None:
+        if depth > self.maxDepth:
+          self.maxDepth = depth
+          self.result = root.val
+      return
+    
+      if root.left : traversal(root.left, depth + 1) # 優先找左子樹
+      if root.right : traversal(root.right, depth + 1)
+    
+    traversal(root, 1)
+    return self.result
+  ```
+
+  - level-order traversal
+  - Iterative
+
+  ```Python
+  from collections import deque
+  def findBottomLeftValue(root: Optional[TreeNode]) -> int:
+    if root is None: return 0
+    result = 0
+    que = deque([root])
+    while que:
+        size = len(que)
+        result = que[0].val # 紀錄單層最左邊的節點
+        for i in range(size):
+            node = que.popleft()
+            if node.left: que.append(node.left)
+            if node.right: que.append(node.right)
     return result
   ```
 
