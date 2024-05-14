@@ -1,7 +1,7 @@
 ---
 title: "[ Leetcode ] Binary Tree - Property"
 date: 2024-04-10
-lastmod: 2024-04-10
+lastmod: 2024-05-14
 draft: false
 authors: ["nofear195"]
 description: ""
@@ -348,6 +348,62 @@ lightgallery: true
             if node.right: que.append(node.right)
     return result
   ```
+
+### Path Sum
+
+- [112. Path Sum](https://leetcode.com/problems/path-sum)
+
+  - 用遞減的方式，每次減去遍歷路上節點的值，若最後計數器的值為 0，則找到目標總和
+  - Recursive
+    1. 參數與返回值
+       - 參數：當前節點、計數器
+       - 返回值：boolean 表達是否找到目標總和
+    2. 終止條件
+       - 遇到葉節點，判斷計數器當前是否為 0
+    3. 單層邏輯
+       - 遞迴求左右子樹
+
+  ```Python
+  def hasPathSum(root: Optional[TreeNode], targetSum: int) -> bool:
+
+      def traversal(node: TreeNode, count: int) -> bool:
+          if node.left is None and node.right is None:
+              if count == 0:
+                  return True
+              else:
+                  return False
+          if node.left:
+              if traversal(node.left, count - node.left.val): return True
+          if node.right:
+              if traversal(node.right, count - node.right.val): return True
+          return False
+
+      if root is None: return False
+      return traversal(root, targetSum - root.val)
+  ```
+
+  - level-order traversal
+  - Iterative
+    - 使用 list (stack) 紀錄節點與從根節點遍歷到當前節點的數值總和
+
+  ```Python
+  def hasPathSum(root: Optional[TreeNode], targetSum: int) -> bool:
+      if root is None: return False
+      stack = [(root, root.val)]
+
+      while stack:
+          node, current_sum = stack.pop()
+          if node.left is None and node.right is None and current_sum == targetSum:
+              return True
+          if node.right:
+              stack.append((node.right, current_sum + node.right.val))
+          if node.left:
+              stack.append((node.left, current_sum + node.left.val))
+      return False
+  ```
+
+- Related
+  - [113. Path Sum II](https://leetcode.com/problems/path-sum-ii)
 
 ## Reference
 
