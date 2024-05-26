@@ -2,7 +2,7 @@
 title: "從測試中學習 Go 語言 (變數、條件判斷篇)"
 date: 2024-02-17
 lastmod: 2024-02-18
-draft: true
+draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["Go"]

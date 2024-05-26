@@ -2,7 +2,7 @@
 title: "從測試中學習 Go 語言 (迴圈迭代篇)"
 date: 2024-02-18
 lastmod: 2024-02-19
-draft: true
+draft: false
 authors: ["nofear195"]
 description: ""
 categories: ["Go"]
