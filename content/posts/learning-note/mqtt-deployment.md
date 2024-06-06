@@ -31,14 +31,15 @@ MQTT: A Simple Guide to Service Deployment and Operation
   ```bash
   mqtt-broker/
   │
-  ├── mosquitto/   
-  │   ├── config/
-  │   │   └── mosquitto.conf # 基本參數設定
-  │   │   └── passwd # 帳密
-  │   └── log/
-  │       └── mosquitto.log
+  ├── config/
+  │     └── mosquitto.conf # 基本參數設定
+  │     └── passwd # 帳密
+  │ 
+  ├── log/
+  │ 
   ├── docker-compose.yml
-  └── create_user.sh # 簡易帳密生成執行檔
+  └── create_user.sh # 單次使用者與密碼生成執行檔
+  └── create_user_batch.sh # 批次使用者與密碼生成執行檔
   ```
 
 - mosquitto.conf (基本參數設定)
@@ -74,9 +75,9 @@ MQTT: A Simple Guide to Service Deployment and Operation
       container_name: mqtt-broker
       restart: always
       volumes:
-        - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
-        - ./mosquitto/config/passwd:/mosquitto/config/passwd
-        - ./mosquitto/log/:/mosquitto/log/
+        - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+        - ./config/passwd:/mosquitto/config/passwd
+        - ./log/:/mosquitto/log/
         - mosquitto-data:/mosquitto/data/
       ports:
         - 1883:1883
@@ -86,52 +87,24 @@ MQTT: A Simple Guide to Service Deployment and Operation
     mosquitto-data:
   ```
 
-- create_user.sh
-  - 用來新增帳密的執行檔，新增後要變更檔案模式 `chmod +x create_user.sh`
-
-  ```sh
-  #!/bin/bash
-
-  # Function to check if a command exists
-  command_exists() {
-    command -v "$1" &> /dev/null
-  }
-
-  # Check if Docker is installed
-  if ! command_exists docker; then
-    echo "Docker is not installed. Please install Docker and try again."
-    exit 1
-  fi
-
-  # Prompt the user for the username and password
-  read -p "Enter the username: " username
-  read -sp "Enter the password: " password
-  echo
-
-  # Pull the Mosquitto image
-  docker pull eclipse-mosquitto:2.0.18
-
-  # Create the config directory if it doesn't exist
-  mkdir -p ./mosquitto/config
-
-  # Create an empty password file if it doesn't exist
-  touch ./mosquitto/config/passwd
-
-  # Run the container to set up the password
-  docker run --rm -v "$(pwd)/mosquitto/config/passwd:/mosquitto/config/passwd" eclipse-mosquitto:2.0.18 sh -c "
-  chmod 0700 /mosquitto/config/passwd &&
-  chown root:root /mosquitto/config/passwd &&
-  mosquitto_passwd -b /mosquitto/config/passwd $username $password
-  "
-
-  echo "Username and password have been added to the passwd file."
-  ```
+- 新增 MQTT 使用者與密碼
+  - 指令 `mosquitto_passwd`
+  - 使用者與密碼格式：  `username:password` (username 不可包含 ":")
+  - 參考連結：[https://mosquitto.org/man/mosquitto_passwd-1.html](https://mosquitto.org/man/mosquitto_passwd-1.html)
+  - 自製簡易執行檔
+    - `create_user.sh`
+      - 單次生成執行檔
+      - 指令：`mosquitto_passwd -b /mosquitto/config/passwd $username $password`
+    - `create_user_batch.sh`
+      - 批次生成執行檔
+      - 指令：`mosquitto_passwd -U /mosquitto/config/passwd` (更新文件內所有使用者與密碼組合)
+    - 使用執行檔前需變更檔案模式 `chmod +x create_user.sh`
 
 ## Deploying the MQTT Broker
 
 1. `cd ./mqtt-broker` (切換至 docker-compose.yml 所在資料夾)
-2. `docker compose up -d` (使用 docker-compose 工具部署 MQTT broker 服務)
-3. `./create_user.sh` (新增可連接使用 MQTT Broker 的帳號密碼)
+2. `./create_user.sh` or `./create_user_batch.sh` (新增可連接使用 MQTT Broker 的使用者與密碼)
+3. `docker compose up -d` (使用 docker-compose 工具部署 MQTT broker 服務)
 
 ## Operation and Testing
 
@@ -139,84 +112,56 @@ MQTT: A Simple Guide to Service Deployment and Operation
 
 - MQTT Client example in JavaScript
 
+  - publisher.js
+
   ```javascript
-  const mqtt = require("mqtt");
+  const mqtt = require('mqtt');
 
-  class MqttClient {
-    constructor(name, url, username, password, topics) {
-      this.name = name;
-      this.url = url;
-      this.username = username;
-      this.password = password;
-      this.topics = topics;
-      this.client = null;
-    }
+  const client = mqtt.connect('mqtt://mqtt-broker:1883',{
+      username:'user',
+      password:'user'
+  });
 
-    connect(retryCount = 0) {
-      return new Promise((resolve, reject) => {
-        this.client = mqtt.connect(this.url, {
-          username: this.username,
-          password: this.password
-        });
+  client.on('connect', () => {
+    console.log('Publisher connected to MQTT broker');
+    setInterval(() => {
+      client.publish('test/topic', 'Hello, MQTT!'); // Publish a message to a topic
+    }, 1000);
+  });
 
-        this.client.on("connect", () => {
-          console.info(`Connected to MQTT broker: ${this.name}`);
-          this.topics.forEach((topic) => {
-            this.client.subscribe(topic, (err) => {
-              if (err) {
-                console.error(`Failed to subscribe to topic ${topic}`);
-              } else {
-                console.info(`Successfully subscribed to topic ${topic}`);
-              }
-            });
-          });
-          resolve(this.client);
-        });
+  client.on('close', () => {
+    console.log('Publisher disconnected from MQTT broker');
+    client.end()
+  });
+  ```
 
-        this.client.on("error", (error) => {
-          console.error(`Error connecting to MQTT broker: ${this.name}`, error);
-          this.client.end();
-          if (retryCount < 5) { // Max 5 retries
-            setTimeout(() => {
-              this.connect(retryCount + 1).then(resolve).catch(reject);
-            }, 2000 * retryCount); // Exponential backoff
-          } else {
-            reject(error);
-          }
-        });
+  - subscriber.js
 
-        this.client.on("close", () => {
-          console.info(`Disconnected from MQTT broker: ${this.name}`);
-          this.handleClose();
-        });
+  ```javascript
+  const mqtt = require('mqtt');
 
-        this.client.on("message", (topic, message) => {
-          const messageContent = JSON.parse(message.toString());
-          this.handleMessage(topic, messageContent);
-        });
-      });
-    }
+  const client = mqtt.connect('mqtt://mqtt-broker:1883',{
+      username:'user',
+      password:'user'
+  });
 
-    async disconnect() {
-      if (this.client) {
-        await this.client.end(true);
-      }
-    }
+  client.on('connect', () => {
+    console.log('Subscriber connected to MQTT broker');
+    client.subscribe('test/topic'); // Subscribe to a topic
+  });
 
-    handleMessage(topic, message) {
-      console.log(`Message received on ${topic}:`, message);
-    }
+  client.on('message', (topic, message) => {
+    console.log(`Received message on topic ${topic}: ${message.toString()}`);
+  });
 
-    handleClose() {
-      console.log(`Connection to MQTT broker ${this.name} closed.`);
-      this.client.removeAllListeners();
-    }
-  }
-
-  module.exports = { MqttClient };
+  client.on('close', () => {
+    console.log('Subscriber disconnected from MQTT broker');
+    client.end()
+  });
   ```
 
 ## Reference
 
+- [實作範例: https://github.com/nofear195/mqtt-broker-nodejs-client](https://github.com/nofear195/mqtt-broker-nodejs-client)
 - [Official Image : https://hub.docker.com/_/eclipse-mosquitto](https://hub.docker.com/_/eclipse-mosquitto)
 - [Eclipse Mosquitto Homepage: https://mosquitto.org/](https://mosquitto.org/)
