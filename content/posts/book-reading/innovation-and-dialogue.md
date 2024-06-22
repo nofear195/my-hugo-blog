@@ -5,7 +5,7 @@ lastmod: 2023-04-28
 draft: false
 authors: ["nofear195"]
 description: ""
-categories: ["learning-note"]
+categories: ["book-reading"]
 tags: ["創新","訊息傳達"]
 lightgallery: true
 
