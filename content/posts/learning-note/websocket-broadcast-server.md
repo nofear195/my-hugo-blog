@@ -29,7 +29,7 @@ WebSocket: Simple WebSocket Broadcast Server Implementation
 - 角色
   - Broadcast Server : 可比喻為燈塔，是訊息傳送的媒介，負責接收訊息與廣播訊息
   - Client : 傳送訊息給 Server，由 Server 廣播至其他已連接的 Clients
-  - 基本設置：一個 MQTT Broker，多個 Client 端
+  - 基本設置：一個 Broadcast Server，多個 Client 端
 
 - 特色
   - 輸入 port number (通訊埠號)，即可建立一個新的 WebSocket Server
@@ -40,7 +40,7 @@ WebSocket: Simple WebSocket Broadcast Server Implementation
 
 ## Preparation
 
-- 確保在 Node.js 環境
+- 確保在 Node.js 環境中開啟
 - 使用 `npm install` 安裝所有相依套件
 - 檔案結構：
 
